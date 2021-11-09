@@ -1,0 +1,45 @@
+// Following is only for demo purposes
+
+@import "../../../../assets/scss/scss-imports";
+
+.animations {
+  column-gap: $grid-gutter-width;
+
+  @media(min-width: 1500px) {
+    column-count: 3;
+  }
+
+  @media (min-width: 800px) and (max-width: 1499px) {
+    column-count: 2;
+  }
+
+  @media screen and (max-width: 799px) {
+    column-count: 1;
+  }
+
+  .card {
+    .row {
+      margin: 1rem -0.5rem 0;
+    }
+
+    .col-sm-6 {
+      padding: 0 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-body {
+      padding-bottom: 1.15rem;
+
+      & > img {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        border-radius: $border-radius;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

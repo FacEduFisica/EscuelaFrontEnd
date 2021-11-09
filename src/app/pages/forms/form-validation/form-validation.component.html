@@ -1,0 +1,94 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Basic examples</h2>
+      <h6 class="card-subtitle">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&#x3C;form&#x3E;</code>. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript.</h6>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="card-body__title">Valid stats</h3>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-valid" placeholder="Default" required />
+            <i class="form-group__bar"></i>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-valid" placeholder="With description" required />
+            <div class="valid-feedback">Looks good!</div>
+            <i class="form-group__bar"></i>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="card-body__title">Invalid stats</h3>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-invalid" placeholder="Default" required />
+            <i class="form-group__bar"></i>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-invalid" placeholder="With description" required />
+            <div class="invalid-feedback">Please provide a valid input</div>
+            <i class="form-group__bar"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Tooltips</h4>
+      <h6 class="card-subtitle">If your form layout allows it, you can swap the <code class="highlighter-rouge">.[valid|invalid]-feedback</code> classes for <code class="highlighter-rouge">.[valid|invalid]-tooltip</code> classes to display validation feedback in a styled tooltip. Be sure to have a parent with <code class="highlighter-rouge">position: relative</code> on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.</h6>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="card-body__title">Valid stats</h3>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-valid" placeholder="Default" required />
+            <i class="form-group__bar"></i>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-valid" placeholder="With icon" required />
+            <i class="form-group__bar"></i>
+            <div class="valid-tooltip">
+              Looks good with icon!
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="card-body__title">Valid stats</h3>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-invalid" placeholder="Default" required />
+            <i class="form-group__bar"></i>
+            <div class="invalid-tooltip">
+              Invalid input!
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control is-invalid" placeholder="With icon" required />
+            <i class="form-group__bar"></i>
+            <div class="invalid-tooltip">
+              Please provide a valid input
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

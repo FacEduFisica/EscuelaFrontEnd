@@ -1,0 +1,86 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Toggle states</h4>
+
+      <button type="button" class="btn btn-primary" [(ngModel)]="singleToggle" btnCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0">
+        Single Toggle
+      </button>
+
+      <hr>
+
+      <pre>{{singleToggle}}</pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Checkbox</h4>
+      <h6 class="card-subtitle">Checkbox-like buttons set with variable states</h6>
+
+      <div class="btn-group">
+        <label class="btn btn-primary" [(ngModel)]="checkbox.left" btnCheckbox tabindex="0" role="button">Left</label>
+        <label class="btn btn-primary" [(ngModel)]="checkbox.middle" btnCheckbox tabindex="0" role="button">Middle</label>
+        <label class="btn btn-primary" [(ngModel)]="checkbox.right" btnCheckbox tabindex="0" role="button">Right</label>
+      </div>
+
+      <hr>
+
+      <pre>{{checkbox | json}}</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Radio</h4>
+      <h6 class="card-subtitle">Radio buttons with checked/unchecked states. Group can be created in two ways: using <code>btnRadioGroup</code> directive or using the same <code>ngModel</code> binding with several buttons (works only for template driven forms). Check the demo below for more info.</h6>
+
+      <div class="btn-group">
+        <label class="btn btn-primary" [(ngModel)]="radio" btnRadio="Left" tabindex="0" role="button">Left</label>
+        <label class="btn btn-primary" [(ngModel)]="radio" btnRadio="Middle" tabindex="0" role="button">Middle</label>
+        <label class="btn btn-primary" [(ngModel)]="radio" btnRadio="Right" tabindex="0" role="button">Right</label>
+      </div>
+
+      <br>
+
+      <div class="btn-group" btnRadioGroup [(ngModel)]="radio">
+        <label class="btn btn-success" btnRadio="Left" tabindex="0" role="button">Left</label>
+        <label class="btn btn-success" btnRadio="Middle" tabindex="0" role="button">Middle</label>
+        <label class="btn btn-success" btnRadio="Right" tabindex="0" role="button">Right</label>
+      </div>
+
+      <hr>
+
+      <pre>{{radio | json}}</pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Custom template styling</h4>
+      <h6 class="card-subtitle">Use modifier class <code>.btn-group--custom</code> in order to get a template spefici styling on all button elements.</h6>
+
+      <div class="btn-group btn-group--custom">
+        <label class="btn" [(ngModel)]="checkbox.left" btnCheckbox tabindex="0" role="button">Left</label>
+        <label class="btn" [(ngModel)]="checkbox.middle" btnCheckbox tabindex="0" role="button">Middle</label>
+        <label class="btn" [(ngModel)]="checkbox.right" btnCheckbox tabindex="0" role="button">Right</label>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="btn-group btn-group--custom">
+        <label class="btn" [(ngModel)]="radio" btnRadio="Left" tabindex="0" role="button">Left</label>
+        <label class="btn" [(ngModel)]="radio" btnRadio="Middle" tabindex="0" role="button">Middle</label>
+        <label class="btn" [(ngModel)]="radio" btnRadio="Right" tabindex="0" role="button">Right</label>
+      </div>
+    </div>
+  </div>
+</div>

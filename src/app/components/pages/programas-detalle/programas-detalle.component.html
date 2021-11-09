@@ -1,0 +1,39 @@
+<div class="content__inner " style="width: 100%">
+    <nav class="navbar navbar-expand-lg titulo">
+        <h2 class="p">Detalle Programa {{nombre}}</h2>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <button class="btn btn-success button mb-4" routerLink='/home'>Atrás</button>
+            <div class="text-center" *ngIf="many">
+                <h4 class="list-group-item p titulo">{{detallePrograma[0].nombre}}</h4>
+                <p class="list-group-item">{{detallePrograma[0].descripcion}}</p>
+                <p class="list-group-item">${{detallePrograma[0].valor | number:'4.0-5'}}</p>
+                <p class="list-group-item">Programa {{detallePrograma[0].estado}}</p>
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Programación</th>
+                            <th>Estado</th>
+                            <th>Rango Edad</th>
+                            <th>Inicio Clase</th>
+                            <th>Fin Clase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let program of detallePrograma">
+                            <td>{{program.nombre_curso}}</td>
+                            <td>{{program.descripcion_curso}}</td>
+                            <td>Curso {{program.estado_curso}}</td>
+                            <td>{{program.edad_min}} a {{program.edad_max}} años</td>
+                            <td>{{program.hora_inicial}}</td>
+                            <td>{{program.hora_final}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="mensaje" class="text-center alert alert-success">{{ mensaje }} </div>

@@ -1,0 +1,95 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="invoice">
+    <div class="invoice__header">
+      <img class="invoice__logo" [src]="['./assets/demo/img/'+invoice.logo]" alt="">
+    </div>
+
+    <div class="row invoice__address">
+      <div class="col-6">
+        <div class="text-right">
+          <p>Invoice from</p>
+
+          <h4>{{ invoice.from.name }}</h4>
+
+          <address>
+            {{ invoice.from.address1 }}<br>
+            {{ invoice.from.address2 }}
+          </address>
+
+          {{ invoice.from.phone }}<br/>
+          {{ invoice.from.email }}
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="text-left">
+          <p>Invoice to</p>
+
+          <h4>{{ invoice.to.name}}</h4>
+
+          <address>
+            {{ invoice.to.address1 }}
+            {{ invoice.to.address2 }}
+          </address>
+
+          {{ invoice.to.phone }}<br/>
+          {{ invoice.to.email }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row invoice__attrs">
+      <div *ngFor="let attr of invoice.attr" class="col-3">
+        <div class="invoice__attrs__item">
+          <small>{{ attr.type }}</small>
+          <h3>{{ attr.value }}</h3>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="table table-bordered invoice__table">
+      <thead>
+        <tr class="text-uppercase">
+          <th>ITEM DESCRIPTION</th>
+          <th>UNIT PRICE</th>
+          <th>QUANTITY</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of invoice.items; let i = index;">
+          <td width="50%">{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.total }}</td>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td>$20,092.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="invoice__remarks">
+      <h5>REMARKS</h5>
+      <p>{{ invoice.remarks }}</p>
+
+      <h5 class="mt-5">THANK YOU FOR YOUR BUSINESS</h5>
+      <p>{{ invoice.message }}</p>
+    </div>
+
+    <footer class="invoice__footer">
+      <span>{{ invoice.support.email }}</span>
+      <span>{{ invoice.support.phone }}</span>
+      <span>{{ invoice.support.website }}</span>
+    </footer>
+  </div>
+
+  <button class="btn btn-danger btn--action" (click)="print()"><i class="zmdi zmdi-print"></i></button>
+</div>

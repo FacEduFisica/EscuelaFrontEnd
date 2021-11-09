@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ widgetTitle }}</h4>
+    <h6 class="card-subtitle">{{ widgetSubTitle }}</h6>
+  </div>
+
+  <div class="listview listview--hover">
+    <a *ngFor="let post of recentPostsData" class="listview__item">
+      <img [src]="['./assets/demo/img/profile-pics/'+post.img]" class="listview__img" alt="">
+
+      <div class="listview__content">
+        <div class="listview__heading">{{ post.author }}</div>
+        <p>{{ post.post }}</p>
+      </div>
+    </a>
+
+    <a [routerLink]="" class="view-more">View All Posts</a>
+  </div>
+</div>

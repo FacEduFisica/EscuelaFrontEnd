@@ -1,0 +1,74 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small [innerHtml]="pageSubTitle"></small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Basic sortable example with least configuration.</h6>
+
+      <bs-sortable
+        class="sortable"
+        [(ngModel)]="sortableBasic"
+        itemClass="sortable__item"
+        itemActiveClass="sortable__item--active"
+        placeholderItem="Drag here"
+        placeholderClass="placeholderStyle"
+        wrapperClass="sortable__wrapper">
+      </bs-sortable>
+
+      <br>
+      <br>
+
+      <pre class="code-preview">model: {{ sortableBasic | json }}</pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Complex data model</h4>
+      <h6 class="card-subtitle">A complex sortable layout with connecting lists.</h6>
+
+      <div class="row">
+        <div class="col-md-6">
+          <bs-sortable
+            class="sortable mb-4"
+            [(ngModel)]="sortableComplexLeft"
+            fieldName="name"
+            itemClass="sortable__item"
+            itemActiveClass="sortable__item--active"
+            placeholderItem="Drag here"
+            placeholderClass="sortable__placeholder"
+            wrapperClass="sortable__wrapper">
+          </bs-sortable>
+        </div>
+        <div class="col-md-6">
+          <bs-sortable
+            class="sortable"
+            [(ngModel)]="sortableComplexRight"
+            fieldName="name"
+            itemClass="sortable__item"
+            itemActiveClass="sortable__item--active"
+            placeholderItem="Drag here"
+            placeholderClass="sortable__placeholder"
+            wrapperClass="sortable__wrapper">
+          </bs-sortable>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-6">
+          <pre class="code-preview">{{ sortableComplexLeft | json }}</pre>
+        </div>
+        <div class="col-md-6">
+          <pre class="code-preview">{{ sortableComplexRight | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

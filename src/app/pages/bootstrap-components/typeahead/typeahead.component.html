@@ -1,0 +1,53 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Static example</h4>
+      <h6 class="card-subtitle">Start type a US state to see the Typeahead.</h6>
+
+      <div class="form-group">
+        <input [(ngModel)]="selected" [typeahead]="states" class="form-control" placeholder="Select a US state">
+        <i class="form-group__bar"></i>
+      </div>
+
+      <pre>State: {{ selected | json}}</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Item template</h4>
+      <h6 class="card-subtitle">A custom template can be attached with the options.</h6>
+
+      <div class="form-group">
+        <input [(ngModel)]="selectedCustom" [typeaheadItemTemplate]="customItemTemplate" [typeahead]="states" class="form-control" placeholder="Select a US state">
+        <i class="form-group__bar"></i>
+      </div>
+
+      <pre>State: {{ selectedCustom | json }}</pre>
+
+      <ng-template #customItemTemplate let-model="item" let-index="index">
+        <span class="text-red">This is:</span> {{model | json}} Index: {{ index }}
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Scrollable</h4>
+      <h6 class="card-subtitle">A long list options can be set to scrollable using attribute <code>[typeaheadScrollable]</code> and <code>[typeaheadOptionsInScrollableView]</code></h6>
+
+      <div class="form-group">
+        <input [(ngModel)]="selected" [typeahead]="states" [typeaheadScrollable]="true" [typeaheadOptionsInScrollableView]="5" class="form-control" placeholder="Select a US state">
+        <i class="form-group__bar"></i>
+      </div>
+
+      <pre>State: {{ selected | json }}</pre>
+    </div>
+  </div>
+
+</div>

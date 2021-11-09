@@ -1,0 +1,80 @@
+<div class="content__inner " style="width: 100%" >
+    <nav class="navbar navbar-expand-lg titulo">
+      <h2 class="p">Nuevo Entrenamiento</h2>
+    </nav>
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="entrenamientoFormGroup">
+
+          <div class="row">
+  
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label>Fecha: </label>
+                  <div class="form-inline">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp"  ngbDatepicker
+                          #d="ngbDatepicker" formControlName="fecha">
+                        <div class="input-group-append">
+                          <button class="material-icons" calendar_today (click)="d.toggle()" type="button"><img
+                              src="assets/img/calendario.png" alt=""></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                  <label>Grupo</label>
+                  <div class="select">
+                    <select class="form-control" formControlName="curso">
+                      <option>Seleccione...</option>
+                      <option *ngFor="let curso of cursos" [value]="curso.id_curso">
+                        {{ curso.nombre }} - {{ curso.id_curso }} </option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Clase N°</label>
+                <input type="text" class="form-control" formControlName="clase" >
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+         <div class="col-md-12">
+            <label for="">Objetivo General</label>
+            <br>
+            <textarea name="" id="" cols="100" rows="5" formControlName="objetivoGeneral"></textarea>
+         </div>
+         <div class="col-md-12">
+            <label for="">Componentes</label>
+            <br>
+            <textarea name="" id="" cols="100" rows="5" formControlName="componentes"> </textarea>
+         </div>
+
+         <div class="col-md-12">
+            <label for="">Actividades</label>
+            <br>
+            <textarea name="" id="" cols="100" rows="5" formControlName="actividades"></textarea>
+         </div>
+         <div class="col-md-12">
+            <label for="">Tiempo de Duración</label>
+            <br>
+            <textarea name="" id="" cols="100" rows="5" formControlName="tiempoDuracion"></textarea>
+         </div>
+         
+          </div>
+          <div>
+              <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+              <button class="btn btn-success button" (click)="guardar()">Guardar</button>
+            </div>
+      
+        </form>
+      </div>
+    </div>
+  </div>

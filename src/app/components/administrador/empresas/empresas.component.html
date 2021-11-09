@@ -1,0 +1,53 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nueva">
+    <nav class="navbar navbar-expand-lg titulo">
+        <h2 class="p">Empresas</h2>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <button type="button" class="btn btn-success button" (click)='nuevaEmpresa()'>Nueva Empresa</button>
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empresa of empresas">
+                        <td>{{ empresa.nombre}}</td>
+                        <td>
+                            <button type="button" class="btn btn-success button" (click)='editar(empresa.id)'>Actualizar</button>
+                            <button type="button" class="btn btn-success button" (click)='eliminar(empresa.id)'>Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="content__inner " style="width: 100%" *ngIf="nueva">
+    <nav class="navbar navbar-expand-lg titulo">
+        <h2 class="p">Formulario Empresa</h2>
+    </nav>
+    <div class="card new-contact">
+        <form [formGroup]="empresaForm">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+                <button *ngIf="!update" class="btn btn-success button" (click)="setEmpresas()">Guardar</button>
+                <button *ngIf="update" class="btn btn-success button" (click)="sendUpdateEmpresa(empresa.id)">Actualizar</button>
+            </div>
+            <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
+        </form>
+    </div>
+</div>

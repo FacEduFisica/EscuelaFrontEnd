@@ -1,0 +1,58 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basc examples</h4>
+      <h6 class="card-subtitle">Default pagination UI is highly customized in order to maintain the UI consistency across the template.</h6>
+
+      <p>Complete Pagination</p>
+      <pagination [totalItems]="70" [boundaryLinks]="true"></pagination>
+
+      <br>
+
+      <p>Disabled boundary links</p>
+      <pagination [totalItems]="70"></pagination>
+
+      <br>
+
+      <p>Disabled boundary and direction links</p>
+      <pagination [totalItems]="70" [directionLinks]="false"></pagination>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Limits</h4>
+      <h6 class="card-subtitle">Limit the maximum visible page numbers</h6>
+
+      <pagination [totalItems]="300" [maxSize]="5"></pagination>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Pager</h4>
+      <h6 class="card-subtitle">Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</h6>
+
+      <pagination
+        [totalItems]="totalItems"
+        [(ngModel)]="currentPage">
+      </pagination>
+
+      <pager
+        [totalItems]="totalItems"
+        [(ngModel)]="currentPage"
+        [itemsPerPage]="10">
+      </pager>
+
+      <br>
+
+      <pre>Current page: {{ currentPage }}</pre>
+
+    </div>
+  </div>
+</div>

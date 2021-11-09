@@ -1,0 +1,39 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="toolbar">
+        <div class="toolbar__label"><span class="hidden-xs-down">Total</span> 543 Photos</div>
+
+        <div class="actions">
+            <i class="actions__item zmdi zmdi-search" (click)="gallerySearch = true"></i>
+            <a [routerLink]="" class="actions__item zmdi zmdi-time"></a>
+            <div class="dropdown actions__item" dropdown>
+                <i class="zmdi zmdi-sort" dropdownToggle=""></i>
+
+                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                    <a [routerLink]="" class="dropdown-item">Last Modified</a>
+                    <a [routerLink]="" class="dropdown-item">Name</a>
+                    <a [routerLink]="" class="dropdown-item">Size</a>
+                </div>
+            </div>
+            <a [routerLink]="" class="actions__item zmdi zmdi-help-outline"></a>
+        </div>
+
+        <div class="toolbar__search" *ngIf="gallerySearch">
+            <input type="text" placeholder="Search...">
+            <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="gallerySearch = false"></i>
+        </div>
+    </div>
+
+    <div class="row photos" lightbox-group>
+        <div class="col-md-2 col-4 photos__item" *ngFor="let item of galleryItems; let index = index" lightbox [fullImage]="{path: './assets/demo/img/photo-gallery/'+ (index + 1) + '.jpg'}">
+            <img [src]="['./assets/demo/img/photo-gallery/'+ (index + 1) + '.jpg']" alt=""/>
+        </div>
+    </div>
+
+    <div class="load-more">
+        <a [routerLink]=""><i class="zmdi zmdi-refresh-alt"></i> Load more notes</a>
+    </div>
+</div>

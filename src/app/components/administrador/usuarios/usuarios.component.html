@@ -1,0 +1,117 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nuevoU">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Usuarios</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-success button" (click)='nuevoUsuario()'>Nuevo Usuario</button>
+      <button type="button" class="btn btn-success button" (click)="updateuser()">Actualizar Usuario</button>
+      <button type="button" class="btn btn-success button" (click)=delete()>Eliminar Usuario</button>
+
+      <div id="pdfTable" #pdfTable class="tabla_admin">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectOnlyOne(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombre_completo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.nombre}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.apellido}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.is_active ?'Activo':'No activo'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="rol">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.user_type}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectOnlyOne(row)"></tr>
+        </table>
+      </div>
+      <button type="button" class="btn" (click)="exportPdf()">Exportar PDF</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="content__inner " style="width: 100%" *ngIf="nuevoU">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Formulario Usuario</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="newContactForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Apellidos</label>
+                <input type="text" class="form-control" formControlName="apellido">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Correo</label>
+                <input type="text" class="form-control" formControlName="email">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Rol</label>
+                <div class="select">
+                  <select class="form-control" formControlName="rol">
+                    <option value="Admin">Administrador</option>
+                    <option value="Acudiente">Acudiente</option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+            <button *ngIf="!update" class="btn btn-success button" (click)="saveUser()">Guardar</button>
+            <button *ngIf="update" class="btn btn-success button" (click)="sendUpdateUser()">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="mensajeRegister" class="alert alert-success">{{ mensajeRegister }} </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ sectionTitle[1].title }}</h1>
+    <small>{{ sectionTitle[1].sub }}</small>
+  </header>
+
+  <div class="row price-table price-table--highlight">
+    <div *ngFor="let table of pricingTables | slice: 0:3; let i = index;" class="col-md-4">
+      <div class="price-table__item" [class.price-table__item--popular]="i == 1">
+        <header [class]="['price-table__header bg-']+table.color">
+          <div class="price-table__title">{{ table.title }}</div>
+          <div class="price-table__desc">{{ table.sub }}</div>
+        </header>
+        <div class="price-table__price color-teal">
+          ${{ table.price }} |
+          <small>month</small>
+        </div>
+        <ul class="price-table__info">
+          <li *ngFor="let feature of table.features">{{ feature }}</li>
+        </ul>
+        <a [routerLink]="" [class]="['price-table__action bg-']+table.color">Select Plan</a>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <header class="content__title">
+    <h1>{{ sectionTitle[2].title }}</h1>
+    <small>{{ sectionTitle[2].sub }}</small>
+  </header>
+
+  <div class="row price-table">
+    <div *ngFor="let table of pricingTables | slice: 0:3;" class="col-md-4">
+      <div class="price-table__item">
+        <header [class]="['price-table__header bg-']+table.color">
+          <div class="price-table__title">{{ table.title }}</div>
+          <div class="price-table__desc">{{ table.sub }}</div>
+        </header>
+        <div class="price-table__price color-teal">
+          ${{ table.price }} |
+          <small>month</small>
+        </div>
+        <ul class="price-table__info">
+          <li *ngFor="let feature of table.features">{{ feature }}</li>
+        </ul>
+        <a [routerLink]="" [class]="['price-table__action bg-']+table.color">Select Plan</a>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <header class="content__title">
+    <h1>{{ sectionTitle[3].title }}</h1>
+    <small>{{ sectionTitle[3].sub }}</small>
+  </header>
+
+  <div class="row price-table">
+    <div *ngFor="let table of pricingTables" class="col-md-3">
+      <div class="price-table__item">
+        <header [class]="['price-table__header bg-']+table.color">
+          <div class="price-table__title">{{ table.title }}</div>
+          <div class="price-table__desc">{{ table.sub }}</div>
+        </header>
+        <div class="price-table__price color-teal">
+          ${{ table.price }} |
+          <small>month</small>
+        </div>
+        <ul class="price-table__info">
+          <li *ngFor="let feature of table.features">{{ feature }}</li>
+        </ul>
+        <a [routerLink]="" [class]="['price-table__action bg-']+table.color">Select Plan</a>
+      </div>
+    </div>
+  </div>
+</div>

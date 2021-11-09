@@ -1,0 +1,688 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Input group</h4>
+            <h6 class="card-subtitle">Easily extend form controls by adding text, buttons, or button groups on either
+                side of textual <code>&#x3C;input&#x3E;</code>s.</h6>
+
+            <h3 class="card-body__title">Basic example</h3>
+            <p>Place one add-on or button on either side of an input. You may also place one on both sides of an
+                input.</p>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username">
+                        <i class="form-group__bar"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Recipient's username">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@example.com</span>
+                        </div>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">https://example.com/users/</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name">
+                        <i class="form-group__bar"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <h3 class="card-body__title">Sizing</h3>
+            <p>Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will
+                automatically resize. No need for repeating the form control size classes on each element.</p>
+
+            <br>
+
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Small</span>
+                </div>
+                <input type="text" class="form-control">
+                <i class="form-group__bar"></i>
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Default</span>
+                </div>
+                <input type="text" class="form-control">
+                <i class="form-group__bar"></i>
+            </div>
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Large</span>
+                </div>
+                <input type="text" class="form-control">
+                <i class="form-group__bar"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Autosize Textarea</h4>
+            <h6 class="card-subtitle">ngx-autosize is an Angular directive that automatically adjusts textarea height to
+                fit its content</h6>
+
+            <h3 class="card-body__title">Basic example</h3>
+            <p>Start pressing the enter key to see the auto-height in action.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea autosize class="form-control" placeholder="Start typing..."></textarea>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <h3 class="card-body__title">With default value</h3>
+            <div class="form-group">
+        <textarea autosize class="form-control" placeholder="Start typing...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+        </textarea>
+                <i class="form-group__bar"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Input Mask</h4>
+            <h6 class="card-subtitle">ngx-mask is an Angular plugin to make masks on form fields</h6>
+
+            <h3 class="card-body__title">Basic example</h3>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" class="form-control" mask="00/00/0000" placeholder="eg: 23/05/2014">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="text" class="form-control" mask="00:00:00" placeholder="eg: 23:06:55">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Date Time</label>
+                        <input type="text" class="form-control" mask="00/00/0000 00:00:00"
+                               placeholder="eg: 00/00/0000 00:00:00">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>CEP</label>
+                        <input type="text" class="form-control" mask="00000-000" placeholder="eg: 00000-000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-control" mask="000-00-0000000" placeholder="eg: 000-00-0000000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Phone with Odd</label>
+                        <input type="text" class="form-control" mask="(00) 0000-0000" placeholder="eg: (00) 0000-0000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>US Phone Number</label>
+                        <input type="text" class="form-control" mask="(000) 000-0000" placeholder="eg: (000) 000-0000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="text" class="form-control" mask="000.000.000-00" placeholder="eg: 000.000.000-00">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Money</label>
+                        <input type="text" class="form-control" mask="000.000.000.000.000,00" sufix=" $"
+                               placeholder="eg: 000.000.000.000.000,00">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 m-b-20">
+                    <div class="form-group">
+                        <label>IP Address</label>
+                        <input type="text" class="form-control" mask="000.000.000.000"
+                               placeholder="eg: 000.000.000.000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Percentage</label>
+                        <input type="text" class="form-control" mask="00000,00%" sufix=" %" placeholder="eg: 00000,00%">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Credit Card</label>
+                        <input type="text" class="form-control" mask="0000 0000 0000 0000"
+                               placeholder="eg: 0000 0000 0000 0000">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Custom Select</h4>
+            <h6 class="card-subtitle">ng-select is a native lightweight Angular select component with features like
+                multiselect, autocomplete, templating etc.</h6>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>Basic example</label>
+                        <ng-select
+                                [items]="ngSelectData"
+                                bindLabel="name"
+                                placeholder="Select a make"
+                                [(ngModel)]="ngSelectSelected">
+                        </ng-select>
+
+                        <div class="form-text text-muted">{{ngSelectSelected | json}}</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>Disabled search</label>
+                        <ng-select
+                                [items]="ngSelectData"
+                                bindLabel="name"
+                                [searchable]="false"
+                                placeholder="Select multiple makes"
+                                [(ngModel)]="ngSelectSelectedSearch">
+                        </ng-select>
+
+                        <div class="form-text text-muted">{{ngSelectSelectedSearch | json}}</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>Disabled select</label>
+                        <ng-select
+                                [items]="ngSelectData"
+                                bindLabel="name"
+                                placeholder="Select a make"
+                                [disabled]="true"
+                                [(ngModel)]="ngSelectSelectedDisabled">
+                        </ng-select>
+
+                        <div class="form-text text-muted">{{ngSelectSelectedDisabled | json}}</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>Disabled options</label>
+                        <ng-select
+                                [items]="ngSelectDataDisabled"
+                                bindLabel="name"
+                                placeholder="Select a make"
+                                [(ngModel)]="ngSelectSelectedDisabledOption">
+                        </ng-select>
+
+                        <div class="form-text text-muted">{{ngSelectSelectedDisabledOption | json}}</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>Multiple selects</label>
+                        <ng-select
+                                [items]="ngSelectData"
+                                bindLabel="name"
+                                bindValue="name"
+                                [multiple]="true"
+                                placeholder="Select multiple makes"
+                                [(ngModel)]="ngSelectSelectedMultiple">
+                        </ng-select>
+
+                        <div class="form-text text-muted">{{ngSelectSelectedMultiple | json}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Drag and drop file upload</h4>
+            <h6 class="card-subtitle">ngx-dropzone-wrapper is an Angular wrapper library for the popular drag and drop
+                upload plugin Dropzone.js</h6>
+
+            <dropzone class="dragndrop" [config]="DropzoneConfig"
+                      [message]="'Click or drag images here to upload'"></dropzone>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Toggle Switch</h4>
+            <h6 class="card-subtitle">Material design look alike Toggle Switches based on Radio Boxes</h6>
+
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    <h3 class="card-body__title">Basic Example</h3>
+
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" class="toggle-switch__checkbox" [(ngModel)]="toggleSwitchStatus">
+                            <i class="toggle-switch__helper"></i>
+                        </div>
+                        <pre class="mt-2">{{ toggleSwitchStatus }}</pre>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-md-3">
+                    <h3 class="card-body__title">Active State</h3>
+
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" class="toggle-switch__checkbox" checked
+                                   [(ngModel)]="toggleSwitchStatusActive">
+                            <i class="toggle-switch__helper"></i>
+                        </div>
+                        <pre class="mt-2">{{ toggleSwitchStatusActive }}</pre>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-md-3">
+                    <h3 class="card-body__title">Disabled</h3>
+
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" class="toggle-switch__checkbox" disabled>
+                            <i class="toggle-switch__helper"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="card-body__title">Color variants</h3>
+            <p>Optional color variants can be added using modifier classes</p>
+
+            <br>
+
+            <div class="toggle-switch-theme-demo">
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--red">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--blue">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--green">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--cyan">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--purple">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="toggle-switch toggle-switch--amber">
+                        <input type="checkbox" class="toggle-switch__checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Date Picker</h4>
+            <h6 class="card-subtitle">ngx-bootstrap's Datepicker is a highly configurable component that adds datepicker
+                functionality to your pages. You can customize the date format and language, restrict the selectable
+                date ranges.</h6>
+
+            <p>Please visit <a
+                    [routerLink]="['/bootstrap-components/date-picker']">/bootstrap-components/date-picker</a></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Time Picker</h4>
+            <h6 class="card-subtitle">ngx-bootstrap's Timepicker is a lightweight & configurable timepicker directive
+                for Angular.</h6>
+
+            <p>Please visit <a
+                    [routerLink]="['/bootstrap-components/time-picker']">/bootstrap-components/time-picker</a></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Icon Toggles (Checkbox)</h4>
+            <h6 class="card-subtitle">Icon toggles are customized checkboxes to use with icon toggles. Icon toggles are
+                much useful when you have icon toggle elements such as favourites, thumbs ups, thumbs downs etc.</h6>
+
+            <h3 class="card-body__title">Default stat</h3>
+            <p>Click on the icons below to toggle the stat.</p>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="icon-toggle">
+                        <input type="checkbox" [(ngModel)]="iconTogglesStatus">
+                        <i class="zmdi zmdi-flag"></i>
+                    </div>
+                    <pre class="mt-2">{{ iconTogglesStatus }}</pre>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-flag"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-star"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-thumb-up"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-thumb-down"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-check"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox">
+                <i class="zmdi zmdi-circle"></i>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <h3 class="card-body__title">Active (checked) stat</h3>
+            <p>Click on the icons below to toggle the stat.</p>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-flag"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-star"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-thumb-up"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-thumb-down"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-check"></i>
+            </div>
+
+            <div class="icon-toggle">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-circle"></i>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <h3 class="card-body__title">Active Colors</h3>
+            <p>You can set up to 5 active colors by using modifier classes</p>
+
+            <div class="icon-toggle icon-toggle--blue">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-flag"></i>
+            </div>
+
+            <div class="icon-toggle icon-toggle--red">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-star"></i>
+            </div>
+
+            <div class="icon-toggle icon-toggle--green">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-thumb-up"></i>
+            </div>
+
+            <div class="icon-toggle icon-toggle--amber">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-thumb-down"></i>
+            </div>
+
+            <div class="icon-toggle icon-toggle--blue-grey">
+                <input type="checkbox" checked>
+                <i class="zmdi zmdi-circle"></i>
+            </div>
+
+            <br>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Custom Checkboxes</h4>
+            <h6 class="card-subtitle">Custom rounded checkboxes with alphabet characters to use in contacts and related
+                lists</h6>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="checkbox checkbox--char">
+                        <input type="checkbox" id="custom-check-main" [(ngModel)]="customCheckboxStatus">
+                        <label for="custom-check-main" class="bg-red checkbox__char">A</label>
+                    </div>
+
+                    <pre class="mt-2">{{ customCheckboxStatus }}</pre>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="custom-checkbox-demo">
+                <div class="checkbox checkbox--char">
+                    <input type="checkbox" id="custom-check-1">
+                    <label for="custom-check-1" class="bg-red checkbox__char">A</label>
+                </div>
+            </div>
+
+            <div class="custom-checkbox-demo">
+                <div class="checkbox checkbox--char">
+                    <input type="checkbox" id="custom-check-2">
+                    <label for="custom-check-2" class="bg-green checkbox__char">V</label>
+                </div>
+            </div>
+
+            <div class="custom-checkbox-demo">
+                <div class="checkbox checkbox--char">
+                    <input type="checkbox" id="custom-check-3">
+                    <label for="custom-check-3" class="bg-blue checkbox__char">Z</label>
+                </div>
+            </div>
+
+            <div class="custom-checkbox-demo">
+                <div class="checkbox checkbox--char">
+                    <input type="checkbox" id="custom-check-4">
+                    <label for="custom-check-4" class="bg-purple checkbox__char">W</label>
+                </div>
+            </div>
+
+            <div class="custom-checkbox-demo">
+                <div class="checkbox checkbox--char">
+                    <input type="checkbox" id="custom-check-5">
+                    <label for="custom-check-5" class="bg-teal checkbox__char">E</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Input Slider</h4>
+            <h6 class="card-subtitle">ng5-slider is a self-contained, mobile-friendly slider component for Angular.</h6>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="card-body__title">Single Slider</h3>
+                    <ng5-slider class="input-slider" [(value)]="sliderValue" [options]="sliderOptions"></ng5-slider>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="sliderValue">
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3 class="card-body__title">Range Slider</h3>
+                    <ng5-slider class="input-slider" [(value)]="rangeSliderMinValue" [(highValue)]="rangeSliderMaxValue"
+                                [options]="rangeSliderOptions"></ng5-slider>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]="rangeSliderMinValue">
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]="rangeSliderMaxValue">
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Button Plugin</h4>
+            <h6 class="card-subtitle">Do more with Bootstrap's buttons. Control button states or create groups of
+                buttons for more components like toolbars.</h6>
+
+            <p>Please visit <a [routerLink]="['/bootstrap-components/buttons']">/bootstrap-components/buttons</a></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">WYSIWYG Editor</h4>
+            <h6 class="card-subtitle">Completely customizable custom HTML editor for rich text inputs.</h6>
+
+            <quill-editor></quill-editor>
+        </div>
+    </div>
+
+</div>

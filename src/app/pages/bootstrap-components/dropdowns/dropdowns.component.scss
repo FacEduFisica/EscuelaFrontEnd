@@ -1,0 +1,9 @@
+// Following is only for demo purposes
+
+.dropdown-demo {
+  & > .dropdown,
+  & > .btn-group {
+    display: inline-block;
+    margin: 0 1rem 1rem 0;
+  }
+}

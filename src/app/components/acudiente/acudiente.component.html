@@ -1,0 +1,173 @@
+<div class="content__inner content__inner--sm">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">{{ estudiante.nombre_completo }} {{estudiante.apellidos}}</h2>
+  </nav>
+
+  <div class="card new-contact">
+    <div class="new-contact__header">
+      <a [routerLink]="" class="zmdi zmdi-camera new-contact__upload"></a>
+      <img [src]="foto" class="new-contact__img" alt="">
+    </div>
+
+    <div class="card-body" id="pdfTable" #pdfTable>
+      <form [formGroup]="newContactForm" (ngSubmit)="prueba()">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Tipo de Documento</label>
+              <input type="text" class="form-control" formControlName="tipoDocumento">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Número de documento</label>
+              <input type="text" class="form-control" formControlName="numeroDocumento">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Luegar de Expedicion del documento</label>
+              <input type="text" class="form-control" formControlName="lugarExpedicionDocumento">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" class="form-control" formControlName="nombreCompleto">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Apellidos</label>
+              <input type="text" class="form-control" formControlName="apellidos">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Fecha de nacimiento</label>
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="fechaNacimiento">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Lugar de nacimiento</label>
+              <input type="text" class="form-control" formControlName="lugarNacimiento">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Edad</label>
+              <input type="text" class="form-control" formControlName="edad">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Genero</label>
+              <input type="text" class="form-control" formControlName="genero">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Dirección de residencia</label>
+              <input type="text" class="form-control" formControlName="direccionResidencia">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Telefono</label>
+              <input type="text" class="form-control" formControlName="telefono">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Correo electrónico</label>
+              <input type="text" class="form-control" formControlName="correo">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>¿Estudia?</label>
+              <input type="text" class="form-control" formControlName="estudia">
+              <i class="form-group__bar"></i>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Grado Escolar</label>
+              <input type="text" class="form-control" formControlName="gradoEscolar">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>EPS</label>
+              <input type="text" class="form-control" formControlName="eps">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Nombre Acudiente</label>
+              <input type="text" class="form-control" formControlName="nombreAcudiente">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Parentesco</label>
+              <input type="text" class="form-control" formControlName="parentesco">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Correo Electrónico</label>
+              <input type="text" class="form-control" formControlName="emailAcudiente">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Celular</label>
+              <input type="text" class="form-control" formControlName="celular">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Seguimiento del proceso</h4>
+            <div *ngFor="let evaluacion of evaluaciones">
+              <ul>
+                <li *ngFor="let objetivo of evaluacion.objetivos">
+                  {{ objetivo.nombre }} <strong> Nota: {{ objetivo.nota }}</strong>
+                </li>
+              </ul>
+              <p>{{ evaluacion.calificacion.observacion}}</p>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center">
+
+          <button class="btn btn-success button" mat-button>Volver</button>
+          <button class="btn btn-success button" (click)="exportarPDF()" mat-button>Exportar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

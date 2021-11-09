@@ -1,0 +1,78 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Basic tab example with static contents.</h6>
+
+      <tabset>
+        <tab heading="Home">
+          <p>{{ tabContents[1] }}</p>
+
+          <p>{{ tabContents[2] }}</p>
+        </tab>
+        <tab heading="Messages">
+          <p>{{ tabContents[3] }}</p>
+        </tab>
+        <tab heading="Profile">
+          <p>{{ tabContents[4] }}</p>
+        </tab>
+        <tab heading="Settings">
+          <p>{{ tabContents[5] }}</p>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Disabled tabs</h4>
+      <h6 class="card-subtitle">Tabs can be enabled or disabled by changing <code>disabled</code> input property.</h6>
+
+      <tabset>
+        <tab heading="Home">
+          <p>{{ tabContents[1] }}</p>
+        </tab>
+        <tab heading="Messages" [disabled]="true">
+          <p>{{ tabContents[2] }}</p>
+        </tab>
+        <tab heading="Profile" [disabled]="true">
+          <p>{{ tabContents[3] }}</p>
+        </tab>
+        <tab heading="Feed">
+          <p>{{ tabContents[4] }}</p>
+        </tab>
+        <tab heading="Settings">
+          <p>{{ tabContents[5] }}</p>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Justified tab links</h4>
+      <h6 class="card-subtitle">Use <code>[justify]</code> attribute to proportionately fill all the available space.</h6>
+
+      <tabset [justified]="true">
+        <tab heading="Home">
+          <p>{{ tabContents[1] }}</p>
+        </tab>
+        <tab heading="Messages">
+          <p>{{ tabContents[2] }}</p>
+        </tab>
+        <tab heading="Profile">
+          <p>{{ tabContents[3] }}</p>
+        </tab>
+        <tab heading="Feed">
+          <p>{{ tabContents[4] }}</p>
+        </tab>
+      </tabset>
+
+    </div>
+  </div>
+</div>

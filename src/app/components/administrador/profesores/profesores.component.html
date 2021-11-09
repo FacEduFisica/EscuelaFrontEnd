@@ -1,0 +1,295 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nuevoP && !openModal">
+    <nav class="navbar navbar-expand-lg titulo">
+        <h2 class="p">Profesores</h2>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <button type="button" class="btn btn-success button" (click)='nuevoProfesor()'>Nuevo Profesor</button>
+            <button type="button" class="btn btn-success button" (click)='updateProfesor()'>Actualizar Profesor</button>
+            <button type="button" class="btn btn-success button" (click)='delete()'>Eliminar Profesor</button>
+            <button type="button" class="btn btn-success button" (click)='verDetalle()'>Ver Detalle</button>
+
+            <div id="pdfTable" #pdfTable class="tabla_admin">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                    <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectOnlyOne(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cedula">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cédula </th>
+                        <td mat-cell *matCellDef="let profesor"> {{profesor.numero_documento}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                        <td mat-cell *matCellDef="let profesor"> {{profesor.nombre}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="apellido">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+                        <td mat-cell *matCellDef="let profesor">{{profesor.apellido}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+                        <td mat-cell *matCellDef="let profesor"> {{profesor.email}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectOnlyOne(row)"></tr>
+                </table>
+            </div>
+            <button type="button" class="btn" (click)="exportExcel()">Exportar Excel</button>
+        </div>
+    </div>
+</div>
+<div class="content__inner " style="width: 100%" *ngIf="nuevoP">
+    <nav class="navbar navbar-expand-lg titulo">
+        <h2 class="p">Nuevo Profesor</h2>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                <mat-step [stepControl]="informacionPersonalForm">
+                    <form [formGroup]="informacionPersonalForm" #infoPersonal="ngForm" (ngSubmit)="registerInfoP(infoPersonal)">
+                        <ng-template matStepLabel>Informacion Personal</ng-template>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tipo de Documento</label>
+                                        <div class="select">
+                                            <select class="form-control" formControlName="tipo_documento">
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Número de documento</label>
+                                        <input type="number" class="form-control" formControlName="numero_documento" placeholder="1029384742">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div *ngIf="!update" class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Departamento de Expedición del documento</label>
+                                        <select type="text" class="form-control" formControlName="departamento_expedicion" (ngModelChange)="selectDepartamento($event)">
+                      <option *ngFor="let departamento of listDepartamentos" [value]="departamento.departamento">
+                        {{departamento.departamento}}</option>
+                    </select>
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div *ngIf="!update" class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Municipio de Expedición del documento</label>
+                                        <select type="text" class="form-control" formControlName="municipio_expedicion">
+                      <option *ngFor="let ciudad of listCiudadesDepartamento" [value]="ciudad">{{ciudad}}</option>
+                    </select>
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nombre completo</label>
+                                        <input type="text" class="form-control" formControlName="nombre" placeholder="Juan Pepito">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Apellidos</label>
+                                        <input type="text" class="form-control" formControlName="apellido" placeholder="Pérez López">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div *ngIf="!update" class="col-md-6">
+                                    <label for="">Fecha de nacimiento</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" formControlName="fecha_nacimiento">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Lugar de nacimiento</label>
+                                        <input type="text" class="form-control" formControlName="lugar_nacimiento" placeholder="Ciudad , País">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Género</label>
+                                        <div class="select">
+                                            <select class="form-control" formControlName="genero">
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Dirección de residencia</label>
+                                        <input type="text" class="form-control" formControlName="direccion" placeholder="Carrera 48 #7 – 151">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contacto</label>
+                                        <input type="number" class="form-control" formControlName="telefono" placeholder="3002129823">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Correo electrónico</label>
+                                        <input type="text" class="form-control" formControlName="email" placeholder="example@poli.edu.co">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+                            <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="informacionDeSeguridadForm">
+                    <form [formGroup]="informacionDeSeguridadForm" #infoSeguridad="ngForm" (ngSubmit)="registerInfoS(infoSeguridad)">
+                        <ng-template matStepLabel>Información de Seguridad</ng-template>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>EPS</label>
+                                        <div class="select">
+                                            <select class="form-control" formControlName="eps">
+                        <option value="EPS Sura">EPS Sura</option>
+                        <option value="Medimas">Medimas</option>
+                        <option value="Aliansalud">Aliansalud</option>
+                        <option value="Sanitas">Sanitas</option>
+                        <option value="Compensar EPS">Compensar EPS</option>
+                        <option value="Salud Total">Salud Total</option>
+                        <option value="Nueva EPS">Nueva EPS</option>
+                        <option value="Coomeva EPS">Coomeva EPS</option>
+                        <option value="Famisanar">Famisanar</option>
+                        <option value="Cruz Blanca">Cruz Blanca</option>
+                        <option value="SaludVida">SaludVida</option>
+                        <option value="Otra">Otra</option>
+                      </select>
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contacto Emergencia</label>
+                                        <input type="text" class="form-control" formControlName="nombre_contacto_emergencia" placeholder="Pepito Perez">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Celular Contacto</label>
+                                        <input type="number" class="form-control" formControlName="numero_contacto_emergencia" placeholder="3002129823">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <dl></dl>
+                            <div style="text-align: center">
+                                <h3>OBSERVACIONES</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <div class="select">
+                                            <select class="form-control" formControlName="id_empresa">
+                          <option *ngFor="let empresa of empresas" [value]="empresa.id">
+                              {{ empresa.nombre }}</option>
+                      </select>
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tipo de vinculacion</label>
+                                        <div class="select">
+                                            <select class="form-control" formControlName="tipo_vinculacion">
+                        <option value="Empleado">Empleado</option>
+                        <option value="Egresado">Egresado</option>
+                        <option value="Estudiante">Estudiante</option>
+                      </select>
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-success button" mat-button matStepperPrevious>Atras</button>
+                            <button class="btn btn-success button" mat-button matStepperNext>Guardar</button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-horizontal-stepper>
+            <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
+        </div>
+    </div>
+</div>
+
+<div class="content__inner " style="width: 100%" *ngIf="openModal">
+    <div class="card">
+        <div class="card-body">
+            <button class="btn btn-success button mb-4" (click)="volver()">Atrás</button>
+            <ul class="list-group">
+                <li class="list-group-item p titulo">Información Personal</li>
+                <li class="list-group-item"><span class="list-item-poli">Profesor:</span> {{profesor.nombre}} {{profesor.apellido}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Correo:</span> {{profesor.email}}</li>
+                <li class="list-group-item"><span class="list-item-poli">Tipo Documento:</span> {{profesor.tipo_documento}}</li>
+                <li class="list-group-item"><span class="list-item-poli">Documento:</span> {{profesor.numero_documento}}</li>
+                <li class="list-group-item"><span class="list-item-poli">Departamento Expedición Documento:</span> {{profesor.departamento_expedicion}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Municipio Expedición Documento:</span> {{profesor.municipio_expedicion}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Fecha Nacimiento:</span> {{profesor.fecha_nacimiento}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Lugar Nacimiento:</span> {{profesor.lugar_nacimiento}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Dirección:</span> {{profesor.direccion}}</li>
+                <li class="list-group-item"><span class="list-item-poli">Teléfono:</span> {{profesor.telefono}}</li>
+                <li class="list-group-item"><span class="list-item-poli">EPS:</span> {{profesor.eps}}</li>
+                <li class="list-group-item p titulo">Información de Seguridad</li>
+                <li class="list-group-item"><span class="list-item-poli">Contacto Emergencia:</span> {{profesor.nombre_contacto_emergencia}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Número Contacto Emergencia:</span> {{profesor.numero_contacto_emergencia}}
+                </li>
+                <li class="list-group-item"><span class="list-item-poli">Empresa:</span> {{profesor.nombre_empresa}}</li>
+                <li class="list-group-item"><span class="list-item-poli">Tipo Vinculación:</span> {{profesor.tipo_vinculacion}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="content__inner content__inner--sm">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+        <small>{{ pageSubTitle }}</small>
+    </header>
+
+    <div class="card new-contact">
+        <div class="new-contact__header">
+            <a [routerLink]="" class="zmdi zmdi-camera new-contact__upload"></a>
+
+            <img [src]="contactDefaultImg" class="new-contact__img" alt="">
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="newContactForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="i.e. John" [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+                            <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is required</div>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName" placeholder="i.e. Smith" [ngClass]="{ 'is-invalid': formSubmitted && f.lastName.errors }">
+                            <div class="invalid-feedback" *ngIf="formSubmitted && f.lastName.errors">Last Name is required</div>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" class="form-control" placeholder="i.e. Google Inc.">
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" class="form-control" placeholder="i.e. Web Developer">
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="text" class="form-control" formControlName="emailAddress" placeholder="i.e. smith@gmail.com" [ngClass]="{ 'is-invalid': formSubmitted && f.emailAddress.errors }">
+                            <div class="invalid-feedback" *ngIf="f.emailAddress.errors.required">Email is required</div>
+                            <div class="invalid-feedback" *ngIf="f.emailAddress.errors.email">Email must be a valid email address</div>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="text" class="form-control" placeholder="i.e. http://smith.com">
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Mobile Phone</label>
+                            <input type="text" class="form-control" placeholder="i.e. +14155552671">
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Home Phone</label>
+                            <input type="text" class="form-control" placeholder="i.e. +415 555 2671">
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea autosize class="form-control" placeholder="i.e. 711-2880 Nulla St. Mankato, Mississippi, 96522."></textarea>
+                    <i class="form-group__bar"></i>
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea autosize class="form-control"></textarea>
+                    <i class="form-group__bar"></i>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <button type="submit" class="btn btn-primary">Save new contact</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

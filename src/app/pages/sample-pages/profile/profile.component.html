@@ -1,0 +1,41 @@
+<div class="content__inner content__inner--sm">
+  <header class="content__title">
+    <h1>{{ profileInfo.name }}</h1>
+    <small>{{ profileInfo.profession }}, {{ profileInfo.location }}</small>
+  </header>
+
+  <div class="card profile">
+    <div class="profile__img">
+      <img [src]="profileInfo.img" alt="">
+
+      <a [routerLink]="" class="zmdi zmdi-camera profile__img__edit"></a>
+    </div>
+
+    <div class="profile__info">
+      <p>{{ profileInfo.summary }}</p>
+
+      <ul class="icon-list">
+        <li *ngFor="let contact of profileInfo.contacts | slice:0:3"><i [class]="['zmdi zmdi-'+contact.icon]"></i>{{ contact.value }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <nav class="toolbar__nav">
+      <a routerLinkActive="active" [routerLink]="['/sample-pages/profile/about']">About</a>
+      <a routerLinkActive="active" [routerLink]="['/sample-pages/profile/pictures']">Pictures</a>
+      <a routerLinkActive="active" [routerLink]="['/sample-pages/profile/contacts']">Contacts</a>
+    </nav>
+
+    <div class="actions">
+      <i class="actions__item zmdi zmdi-search" (click)="profileSearch = true"></i>
+    </div>
+
+    <div *ngIf="profileSearch" class="toolbar__search">
+      <input type="text" placeholder="Search...">
+      <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="profileSearch = false"></i>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

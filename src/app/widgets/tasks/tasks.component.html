@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ pageTitle }}</h4>
+    <h6 class="card-subtitle">{{ pageSubTitle }}</h6>
+
+    <a *ngFor="let task of tasks" [routerLink]="" class="listview__item">
+      <div class="listview__content">
+        <div class="listview__heading mb-2">{{ task.name }}</div>
+
+        <div class="progress">
+          <div class="progress-bar" [class]="['bg-'+task.color]" [ngStyle]="{'width': task.completed+'%'}" [attr.aria-valuenow]="task.completed" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="" class="view-more">View All Tasks</a>
+  </div>
+</div>

@@ -1,0 +1,322 @@
+<header class="content__title">
+  <h1>{{ sectionTitles[1].title }}</h1>
+  <small>{{ sectionTitles[1].sub }}</small>
+</header>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[2].title }}</h1>
+  <small>{{ sectionTitles[2].sub }}</small>
+</header>
+
+<div class="card-demo">
+  <div class="card">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <div class="actions">
+        <a [routerLink]="" class="actions__item zmdi zmdi-trending-up"></a>
+        <a [routerLink]="" class="actions__item zmdi zmdi-check-all"></a>
+
+        <div class="dropdown actions__item" dropdown>
+          <i dropdownToggle class="zmdi zmdi-more-vert"></i>
+          <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <a [routerLink]="" class="dropdown-item">Refresh</a>
+            <a [routerLink]="" class="dropdown-item">Manage Widgets</a>
+            <a [routerLink]="" class="dropdown-item">Settings</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card card-primary card--inverse bg-blue">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <div class="actions actions--inverse">
+        <a [routerLink]="" class="actions__item zmdi zmdi-trending-up"></a>
+        <a [routerLink]="" class="actions__item zmdi zmdi-check-all"></a>
+
+        <div class="dropdown actions__item" dropdown>
+          <i dropdownToggle class="zmdi zmdi-more-vert"></i>
+          <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <a [routerLink]="" class="dropdown-item">Refresh</a>
+            <a [routerLink]="" class="dropdown-item">Manage Widgets</a>
+            <a [routerLink]="" class="dropdown-item">Settings</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[3].title }}</h1>
+  <small [innerHTML]="sectionTitles[3].sub"></small>
+</header>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[4].title }}</h1>
+  <small [innerHtml]="sectionTitles[4].sub"></small>
+</header>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+
+      <a [routerLink]="" class="card-link">Card link</a>
+      <a [routerLink]="" class="card-link">Another link</a>
+
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+
+      <a [routerLink]="" class="card-link">Card link</a>
+      <a [routerLink]="" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[5].title }}</h1>
+  <small>{{ sectionTitles[5].sub }}</small>
+</header>
+
+<div class="card-demo">
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/6.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+
+    <img class="card-img-bottom" src="./assets/demo/img/headers/4.png">
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[6].title }}</h1>
+  <small [innerHtml]="sectionTitles[6].sub"></small>
+</header>
+
+<div class="card-demo">
+  <div class="card card--inverse">
+    <img class="card-img" src="./assets/demo/img/card-img-overlay.jpg">
+
+    <div class="card-img-overlay">
+      <div class="card-body">
+        <h4 class="card-title">{{ cardTitle }}</h4>
+        <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+        <p class="card-text">{{ cardContent }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[7].title }}</h1>
+  <small [innerHtml]="sectionTitles[7].sub"></small>
+</header>
+
+<div class="card-demo">
+  <div class="card bg-blue card--inverse">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card bg-green card--inverse">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card bg-cyan card--inverse">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card bg-amber card--inverse">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-demo">
+  <div class="card bg-red card--inverse">
+    <div class="card-body">
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[8].title }}</h1>
+  <small [innerHtml]="sectionTitles[8].sub"></small>
+</header>
+
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/6.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/7.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/8.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<header class="content__title">
+  <h1>{{ sectionTitles[9].title }}</h1>
+  <small>{{ sectionTitles[9].sub }}</small>
+</header>
+
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/3.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">{{ cardContent }}</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/4.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="./assets/demo/img/headers/5.png">
+
+    <div class="card-body">
+      <h4 class="card-title">{{ cardTitle }}</h4>
+      <h6 class="card-subtitle">{{ cardSubTitle }}</h6>
+
+      <p class="card-text">Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus.</p>
+    </div>
+  </div>
+</div>

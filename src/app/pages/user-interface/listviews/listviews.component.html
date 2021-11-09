@@ -1,0 +1,234 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Basic listing with single line text.</h6>
+    </div>
+
+    <div class="listview">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Checkboxes</h4>
+      <h6 class="card-subtitle">A checkbox can be also included within a listview item.</h6>
+    </div>
+
+    <div class="listview">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="checkbox listview__checkbox">
+          <input type="checkbox" id="listview-1">
+          <label for="listview-1" class="checkbox__label"></label>
+        </div>
+        <div class="listview__content">
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Headings</h4>
+      <h6 class="card-subtitle">Heading text can be added by wrapping the content on <code>.listview__heading</code></h6>
+    </div>
+
+    <div class="listview">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Attributes</h4>
+      <h6 class="card-subtitle">You can also display information as attributes.</h6>
+    </div>
+
+    <div class="listview">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+
+          <div class="listview__attrs">
+            <span *ngFor="let attr of list.attr">{{ attr }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Media</h4>
+      <h6 class="card-subtitle">Add image or character as a media entry.</h6>
+    </div>
+
+    <div class="listview">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <img *ngIf="list.img" [src]="['./assets/demo/img/profile-pics/' + list.img]" class="listview__img" alt="">
+        <i *ngIf="list.letter" [ngClass]="['avatar-char bg-' + list.color]">{{ list.letter }}</i>
+
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Action links</h4>
+      <h6 class="card-subtitle">Add actions links using <code>.actions</code></h6>
+    </div>
+
+    <div class="listview">
+      <div class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">Dulla vel metus scelerisque ante sollicitudin commodo purus odio</div>
+          <p>Donec congue tempus ligula, varius hendrerit mi hendrerit sit amet. Duis ac quam sit amet leo feugiat iaculis</p>
+        </div>
+        <div class="actions listview__actions">
+          <div class="dropdown actions__item" dropdown>
+            <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a [routerLink]="" class="dropdown-item">Edit</a>
+              <a [routerLink]="" class="dropdown-item">Share</a>
+              <a [routerLink]="" class="dropdown-item">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">Finibus consectetur mauris, eget laoreet turpis malesuada eredeu lectus sed enim suscipit euismod</div>
+          <p>Aliquam fringilla neque sit amet libero convallis ac consequat nulla iaculis urabitur placerat mi sed massa euismod, a tincidunt enim tinciduntam porttitor lorem ac pharetra semper</p>
+        </div>
+        <div class="actions listview__actions">
+          <i class="actions__item zmdi zmdi-delete"></i>
+        </div>
+      </div>
+
+      <div class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">Vestibulum cursus eros id ipsum finibus a pretium justo aliquam</div>
+          <p>Etiam cursus lorem eget sapien euismod, ac elementum urna tempusonec dapibus</p>
+        </div>
+        <div class="actions listview__actions">
+          <i class="actions__item zmdi zmdi-edit"></i>
+        </div>
+      </div>
+
+      <div class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">Nunc erat nunc ullamcorper sit amet odio vel accumsan viverra velit aliquam fringilla neque sit amet libero convallis, ac consequat nulla iaculis.</div>
+          <p>Suspendisse aliquam sapien vitae elit ornare accumsan in dictum eratraesent pulvinar eros</p>
+        </div>
+        <div class="actions listview__actions">
+          <i class="actions__item zmdi zmdi-share"></i>
+          <i class="actions__item zmdi zmdi-delete"></i>
+        </div>
+      </div>
+
+      <div class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">Pellentesque vitae leo vestibulum odio mollis porta blandit eget nunc</div>
+          <p>Suspendisse ullamcorper purus efficitur lorem hendrerit, rhoncus dignissim lorem vehicula</p>
+        </div>
+        <div class="actions listview__actions">
+          <div class="dropdown actions__item" dropdown>
+            <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a [routerLink]="" class="dropdown-item">Edit</a>
+              <a [routerLink]="" class="dropdown-item">Share</a>
+              <a [routerLink]="" class="dropdown-item">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Hoverable list items</h4>
+      <h6 class="card-subtitle">Use class <code>.listview--hover</code> on <code>.listview</code> to make list items hoverable.</h6>
+    </div>
+
+    <div class="listview listview--hover">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Striped rows</h4>
+      <h6 class="card-subtitle">Use class <code>.listview--striped</code> on <code>.listview</code> to make list items striped.</h6>
+    </div>
+
+    <div class="listview listview--striped">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Bordered</h4>
+      <h6 class="card-subtitle">Use class <code>.listview--bordered</code> on <code>.listview</code> to make list items striped.</h6>
+    </div>
+
+    <div class="listview listview--bordered">
+      <div *ngFor="let list of listviewData" class="listview__item">
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.sub }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+  </div>
+</div>

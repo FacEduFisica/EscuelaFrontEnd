@@ -1,0 +1,68 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="toolbar">
+        <div class="toolbar__label">
+            125 Groups
+        </div>
+
+        <div class="actions">
+            <i class="actions__item zmdi zmdi-search" (click)="groupsSearch = true"></i>
+            <a [routerLink]="" class="actions__item zmdi zmdi-info-outline hidden-xs-down"></a>
+
+            <div class="dropdown actions__item hidden-xs-down" dropdown>
+                <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                    <a [routerLink]="" class="dropdown-item">Refresh</a>
+                    <a [routerLink]="" class="dropdown-item">Delete</a>
+                    <a [routerLink]="" class="dropdown-item">Settings</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar__search" *ngIf="groupsSearch">
+            <input type="text" placeholder="Search...">
+            <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="groupsSearch = false"></i>
+        </div>
+    </div>
+
+    <div class="row groups">
+        <div *ngFor="let group of groups" class="col-xl-2 col-lg-3 col-sm-4 col-6">
+            <div class="groups__item">
+                <a [routerLink]="">
+                    <div class="groups__img">
+                        <ng-container *ngFor="let contact of group.contacts">
+                            <img *ngIf="contact.img" class="avatar-img"
+                                 [src]="['./assets/demo/img/contacts/'+contact.img]" alt="">
+                            <div *ngIf="!contact.img" [class]="['avatar-img avatar-char bg-']+contact.color">{{
+                                contact.char }}
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="group.contacts?.length < 4">
+                            <img *ngFor="let emptyContact of [].constructor(4 - group.contacts?.length)"
+                                 class="avatar-img" [src]="contactDefaultImg" alt=""/>
+                        </ng-container>
+                    </div>
+
+                    <div class="groups__info">
+                        <strong>{{ group.name }}</strong>
+                        <small>{{ group.count }} Contacts</small>
+                    </div>
+                </a>
+
+                <div class="actions">
+                    <div class="dropdown actions__item" dropdown>
+                        <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+
+                        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                            <a class="dropdown-item" [routerLink]="">Edit</a>
+                            <a class="dropdown-item" [routerLink]="">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

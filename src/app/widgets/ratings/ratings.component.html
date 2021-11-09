@@ -1,0 +1,23 @@
+<div class="card widget-ratings">
+    <div class="card-body">
+        <h4 class="card-title">{{ widgetTitle }}</h4>
+
+        <div class="widget-ratings__average">
+            <i class="zmdi zmdi-star active"></i>
+            <i class="zmdi zmdi-star active"></i>
+            <i class="zmdi zmdi-star active"></i>
+            <i class="zmdi zmdi-star"></i>
+            <i class="zmdi zmdi-star"></i>
+        </div>
+
+        <div *ngFor="let item of ratingsValue" class="widget-ratings__item">
+            <div class="widget-ratings__star">{{ item.star }} <i class="zmdi zmdi-star"></i></div>
+
+            <div class="widget-ratings__progress">
+                <progressbar [value]="item.count" type="warning"></progressbar>
+            </div>
+
+            <div class="widget-ratings__count">{{ item.count }}</div>
+        </div>
+    </div>
+</div>

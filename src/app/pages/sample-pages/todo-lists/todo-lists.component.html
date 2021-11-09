@@ -1,0 +1,87 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+        <small>{{ pageSubTitle }}</small>
+    </header>
+
+    <div class="row todo">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="toolbar toolbar--inner">
+                    <div class="toolbar__label">29 Total todo lists</div>
+
+                    <div class="actions">
+                        <i class="actions__item zmdi zmdi-search" (click)="todoSearch = true"></i>
+                        <div class="dropdown actions__item" dropdown>
+                            <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+                            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                                <a [routerLink]="" class="dropdown-item">Newest to Oldest</a>
+                                <a [routerLink]="" class="dropdown-item">Oldest to Newest</a>
+                                <a [routerLink]="" class="dropdown-item">Completed first</a>
+                            </div>
+                        </div>
+                        <a [routerLink]="" class="actions__item zmdi zmdi-help-outline"></a>
+                        <a [routerLink]="" class="actions__item zmdi zmdi-settings"></a>
+                    </div>
+
+                    <div class="toolbar__search" *ngIf="todoSearch">
+                        <input type="text" placeholder="Search...">
+                        <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="todoSearch = false"></i>
+                    </div>
+                </div>
+
+                <div class="listview listview--bordered">
+
+                    <div  *ngFor="let todo of todoLists; let i = index;" class="listview__item">
+                        <div class="checkbox checkbox--char todo__item">
+                            <input type="checkbox" [attr.id]="['custom-checkbox-'+i]">
+                            <label [class]="['checkbox__char bg-'+todo.color]" [attr.for]="['custom-checkbox-']+i">{{ todo.cap }}</label>
+
+                            <div class="listview__content">
+                                <div class="listview__heading">{{ todo.title }}</div>
+                                <p>{{ todo.date }}</p>
+                            </div>
+
+                            <div class="listview__attrs">
+                                <span *ngFor="let tag of todo.tags">{{ tag }}</span>
+                                <span>{{ todo.priority }}</span>
+                            </div>
+                        </div>
+
+                        <div class="actions listview__actions">
+                            <div class="dropdown actions__item" dropdown>
+                                <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+                                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                                    <a *ngFor="let action of todoListActions" class="dropdown-item" [routerLink]="">{{ action }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a [routerLink]="" class="view-more">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ todoLabelTitle }}</h4>
+                    <h6 class="card-subtitle">{{ todoLabelSubTitle }}</h6>
+
+                    <div class="tags">
+                        <a *ngFor="let label of todoLabels" [routerLink]="">#{{ label }}</a>
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <input type="text" class="form-control" placeholder="New Label">
+                        <i class="form-group__bar"></i>
+                    </div>
+
+                    <a [routerLink]="" class="btn btn-primary">Create Label</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="row photos" lightbox-group>
+  <div class="col-md-2 col-4 photos__item" *ngFor="let item of picturesItems; let index = index" lightbox [fullImage]="{path: './assets/demo/img/photo-gallery/'+ (index + 1) + '.jpg'}">
+    <img [src]="['./assets/demo/img/photo-gallery/'+ (index + 1) + '.jpg']" alt=""/>
+  </div>
+</div>
+
+<a [routerLink]="" class="view-more text-xs-center">Load more...</a>

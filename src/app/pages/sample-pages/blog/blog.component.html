@@ -1,0 +1,67 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="row">
+    <div class="col-lg-8 col-md-7">
+      <div class="card" *ngFor="let post of blogPosts">
+        <img *ngIf="post.img" class="card-img-top" [src]="['./assets/demo/img/blog/'+post.img]" alt="">
+
+        <div class="card-body">
+          <h4 class="card-title">{{ post.title }}</h4>
+          <h6 class="card-subtitle">by {{ post.author }} on {{ post.date }}</h6>
+
+          <p class="card-text">{{ post.content }}</p>
+
+          <a [routerLink]="" class="card-link">Read More...</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-5 hidden-md-down">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ popularPostsTitle }}</h4>
+          <h6 class="card-subtitle">{{ popularPostsSubTitle }}</h6>
+        </div>
+
+        <div class="listview listview--hover">
+          <a [routerLink]="" *ngFor="let post of popularPosts" class="listview__item">
+            <img [src]="['./assets/demo/img/profile-pics/'+post.img]" class="listview__img" alt="">
+
+            <div class="listview__content">
+              <div class="listview__heading text-truncate">{{ post.title }}</div>
+              <p>by {{ post.author }} on {{ post.date }}</p>
+            </div>
+          </a>
+
+          <div class="m-4"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-img-top" [src]="featurePost.img" alt="">
+        <div class="card-body">
+          <h4 class="card-title">{{ featurePost.title }}</h4>
+          <h6 class="card-subtitle">by {{ featurePost.author }} on {{ featurePost.date }} at {{ featurePost.time }}</h6>
+
+          <p>{{ featurePost.content }}</p>
+          <a [routerLink]="" class="view-more text-left">View Article...</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Categories</h4>
+          <h6 class="card-subtitle">Sed posuere consectetur est at lobortis</h6>
+
+          <div class="tags">
+            <a [routerLink]="" *ngFor="let category of blogCategories">#{{ category }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+
+      <h3 class="card-body__title">Numbers only</h3>
+
+      <nav>
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+        </ul>
+      </nav>
+
+      <br>
+
+      <h3 class="card-body__title">Numbers with direction links</h3>
+
+      <nav>
+        <ul class="pagination">
+          <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+          <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+      </nav>
+
+      <br>
+
+      <h3 class="card-body__title">Numbers, direction links and boundary links</h3>
+
+      <nav>
+        <ul class="pagination">
+          <li class="page-item pagination-first"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+          <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Disabled and active states</h4>
+      <h6 class="card-subtitle">Pagination links are customizable for different circumstances. Use <code>.disabled</code> for links that appear un-clickable and <code>.active</code> to indicate the current page.</h6>
+
+      <nav>
+        <ul class="pagination">
+          <li class="page-item pagination-first disabled"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-prev disabled"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item active"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+          <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Alignment</h4>
+      <h6 class="card-subtitle">Change the alignment of pagination components with <a target="_blank" href="https://getbootstrap.com/docs/4.1/utilities/flex/">flexbox utilities</a>.</h6>
+
+      <h3 class="card-body__title">Centered</h3>
+
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item pagination-first"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+          <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+      </nav>
+
+      <h3 class="card-body__title">Right aligned</h3>
+
+      <nav>
+        <ul class="pagination justify-content-end">
+          <li class="page-item pagination-first"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">1</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">2</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">3</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">4</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">5</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="">6</a></li>
+          <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+          <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

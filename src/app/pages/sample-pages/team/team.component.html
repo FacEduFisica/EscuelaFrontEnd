@@ -1,0 +1,25 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+        <small>{{ pageSubTitle }}</small>
+    </header>
+
+    <div class="row team">
+        <div *ngFor="let item of teams" class="col-md-6 col-lg-4">
+            <div class="card team__item">
+                <img [src]="['./assets/demo/img/contacts/'+item.img]" class="team__img" alt="">
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ item.name }}</h4>
+                    <h6 class="card-subtitle">{{ item.post }}</h6>
+
+                    <p class="card-text">{{ item.about }}</p>
+
+                    <div class="team__social">
+                        <a *ngFor="let link of item.social" [routerLink]="" [class]="['zmdi zmdi-'+ link.platform +' bg-' + link.color]"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

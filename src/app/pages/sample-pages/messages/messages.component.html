@@ -1,0 +1,82 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="messages">
+        <div class="messages__sidebar">
+            <div class="toolbar toolbar--inner mb-3">
+                <div class="toolbar__label">Malinda Hollaway</div>
+
+                <div class="actions toolbar__actions">
+                    <a [routerLink]="" class="actions__item zmdi zmdi-plus"></a>
+                </div>
+            </div>
+
+            <div class="messages__search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="listview listview--hover">
+                <ng-scrollbar shown="hover" compact="true">
+                    <a *ngFor="let buddy of messageBuddies" class="listview__item" [routerLink]="">
+                        <div class="pull-left">
+                            <img [src]="['./assets/demo/img/profile-pics/'+buddy.img]" alt="" class="listview__img">
+                        </div>
+                        <div class="listview__content">
+                            <div class="listview__heading">{{ buddy.name }}</div>
+                            <p>{{ buddy.message }}</p>
+                        </div>
+                    </a>
+                </ng-scrollbar>
+            </div>
+        </div>
+
+        <div class="messages__body">
+            <div class="messages__header">
+                <div class="toolbar toolbar--inner mb-0">
+                    <div class="toolbar__label">Sharah Conor</div>
+
+                    <div class="actions toolbar__actions">
+                        <i class="actions__item zmdi zmdi-search" (click)="messagesSearch = true"></i>
+                        <a [routerLink]="" class="actions__item zmdi zmdi-time"></a>
+                        <a [routerLink]="" class="actions__item zmdi zmdi-info-outline"></a>
+                        <div class="dropdown actions__item" dropdown>
+                            <i class="actions__item zmdi zmdi-more-vert" dropdownToggle></i>
+                            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                                <a [routerLink]="" class="dropdown-item">Refresh</a>
+                                <a [routerLink]="" class="dropdown-item">Delete all</a>
+                                <a [routerLink]="" class="dropdown-item">Settings</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="toolbar__search" *ngIf="messagesSearch">
+                        <input type="text" placeholder="Search...">
+                        <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="messagesSearch = false"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages__content">
+                <ng-scrollbar shown="hover" compact="true">
+                    <div class="messages__item" *ngFor="let item of messageContent.conversation" [class.messages__item--right]="item.type == 'sent'">
+                        <img *ngIf="item.type == 'recieved'" [src]="['./assets/demo/img/profile-pics/'+messageContent.recipient.img]" class="avatar-img" alt="" />
+
+                        <div class="messages__details">
+                            <p *ngFor="let message of item.messages">{{ message }}</p>
+                            <small><i class="zmdi zmdi-time"></i> {{ item.date }} at {{ item.time }}</small>
+                        </div>
+                    </div>
+                </ng-scrollbar>
+            </div>
+
+            <div class="messages__reply">
+                <textarea class="messages__reply__text" placeholder="Type a message..."></textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+// Following is only for demo purposes
+
+.btn-demo {
+  & > .btn,
+  & > .btn-group {
+    margin: 0 5px 10px 0;
+  }
+}

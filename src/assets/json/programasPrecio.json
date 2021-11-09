@@ -1,0 +1,42 @@
+{
+    "programa": [{
+      
+       "nombrePrograma": "ROTACIÓN DEPORTIVA (BALONCESTO, VOLEIBOL, NATACIÓN)",
+      "valor": "79.000"},
+     {
+      
+       "nombrePrograma": "SEMILLEROS DE 2 HORAS (FUTBOL,TAEKWONDO,GIMNASIA,BALONCESTO, VOLEIBOL)",
+      "valor": "55.200"},
+      {
+      
+       "nombrePrograma": "SEMILLEROS DE 1 HORA (PATINAJE,BAILE,BÁDMINTON)",
+      "valor": "32.000"},
+      {
+      
+       "nombrePrograma": "MOTRICIDAD (INICIAIÓN, DESARROLLO, NATACIÓN)",
+      "valor": "79.000"},
+      {
+      
+       "nombrePrograma": "ESTIMULACIÓN MOTRIZ",
+      "valor": "32.000"},
+      {
+      
+       "nombrePrograma": "ESCUELA DE FUTBOL",
+      "valor": "95.000 (NUEVOS), 79.000 (INSCRITOS ANTERIOR AL 2016)"},
+      {
+        
+       "nombrePrograma": "TENIS DE CAMPO (10 CLASES )",
+      "valor": "109.260"
+      },
+      {
+        
+       "nombrePrograma": "ESCUELA DE NATACIÓN (10 CLASES)",
+      "valor": "57.000"
+      },
+       {
+        
+       "nombrePrograma": "PROGRAMA PARA ADULTOS (NATACIÓN-GIMNASIA)",
+      "valor": "32.000"
+      }
+   ]
+  }

@@ -1,0 +1,25 @@
+<div class="card card--inverse widget-past">
+  <div class="card-body">
+    <h4 class="card-title">{{ widgetTitle }}</h4>
+    <h6 class="card-subtitle">{{ widgetSubTitle }}</h6>
+  </div>
+
+  <div class="widget-past__main">
+    <x-chartist [type]="typeMain" [data]="dataMain" [options]="optionsMain"> </x-chartist>
+  </div>
+
+  <div class="listview listview--inverse listview--striped">
+
+    <div *ngFor="let list of pastData" class="listview__item">
+      <div class="widget-past__info">
+        <small>{{ list.title }}</small>
+        <h3>{{ list.amount }}</h3>
+      </div>
+
+      <div class="widget-past__chart hidden-sm">
+        <x-chartist [type]="typeSub" [data]="list.chart" [options]="optionsSub"> </x-chartist>
+      </div>
+    </div>
+
+  </div>
+</div>

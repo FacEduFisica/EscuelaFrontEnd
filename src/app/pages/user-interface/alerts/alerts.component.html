@@ -1,0 +1,58 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic examples</h4>
+      <h6 class="card-subtitle">Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four required contextual classes (e.g., <code>.alert-success</code>)</h6>
+
+      <div class="alert alert-success" role="alert">
+        Well done! You successfully read this important alert message.
+      </div>
+      <div class="alert alert-info" role="alert">
+        Heads up! This alert needs your attention, but it's not super important.
+      </div>
+      <div class="alert alert-warning" role="alert">
+        Warning! Better check yourself, you're not looking too good.
+      </div>
+      <div class="alert alert-danger" role="alert">
+        Oh snap! Change a few things up and try submitting again.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Links</h4>
+      <h6 class="card-subtitle">Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</h6>
+
+      <div class="alert alert-success" role="alert">
+        Well done! You successfully read <a [routerLink]="" class="alert-link">this important alert message</a>.
+      </div>
+      <div class="alert alert-info" role="alert">
+        Heads up! This <a [routerLink]="" class="alert-link">alert needs your attention</a>, but it's not super important.
+      </div>
+      <div class="alert alert-warning" role="alert">
+        Warning! Better check yourself, you're <a [routerLink]="" class="alert-link">not looking too good</a>.
+      </div>
+      <div class="alert alert-danger" role="alert">
+        Oh snap! <a [routerLink]="" class="alert-link">Change a few things up</a> and try submitting again.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Additional content</h4>
+      <h6 class="card-subtitle">Alerts can also contain additional HTML elements like headings and paragraphs.</h6>
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p class="mb-0">Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+      </div>
+    </div>
+  </div>
+</div>

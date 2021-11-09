@@ -1,0 +1,12 @@
+@import "../../../assets/scss/scss-imports";
+
+.widget-contacts__map {
+    display: block;
+    padding: 3px 3px 4px;
+  
+    img {
+      width: 100%;
+      border-radius: $border-radius;
+      margin: 0 0 -1px;
+    }
+  }

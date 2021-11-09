@@ -1,0 +1,146 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <br>
+
+  <header class="content__title">
+    <h1>Basic example</h1>
+    <small>Basic example with label only</small>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar__label">This is a sample label</div>
+  </div>
+
+
+  <header class="content__title">
+    <h1>Nav</h1>
+    <small>Add set of nav links</small>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar__nav">
+      <a [routerLink]="">Profile</a>
+      <a [routerLink]="">Messages</a>
+      <a [routerLink]="">Settings</a>
+    </div>
+  </div>
+
+  <header class="content__title">
+    <h1>Search</h1>
+    <small>Add togglable search blocks with input and close options</small>
+  </header>
+
+  <div class="toolbar">
+    <div class="actions">
+      <i class="actions__item zmdi zmdi-search" (click)="toolbarSearch = true"></i>
+    </div>
+
+    <div *ngIf="toolbarSearch" class="toolbar__search">
+      <input type="text" placeholder="Search...">
+      <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="toolbarSearch = false"></i>
+    </div>
+  </div>
+
+  <header class="content__title">
+    <h1>Action Icons</h1>
+    <small>Add further action icons in addition to search</small>
+  </header>
+
+  <div class="toolbar">
+    <div class="actions">
+      <i class="actions__item zmdi zmdi-search" (click)="toolbarSearch2 = true"></i>
+      <a [routerLink]="" class="actions__item zmdi zmdi-time"></a>
+      <div class="dropdown actions__item" dropdown>
+        <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+          <a [routerLink]="" class="dropdown-item">Last Modified</a>
+          <a [routerLink]="" class="dropdown-item">Name</a>
+          <a [routerLink]="" class="dropdown-item">Size</a>
+        </div>
+      </div>
+      <a [routerLink]="" class="actions__item zmdi zmdi-help-outline"></a>
+    </div>
+
+    <div *ngIf="toolbarSearch2" class="toolbar__search">
+      <input type="text" placeholder="Search...">
+      <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="toolbarSearch2 = false"></i>
+    </div>
+  </div>
+
+  <header class="content__title">
+    <h1>Complete example</h1>
+    <small>Complete toolbar example with navs and action icons</small>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar__nav">
+      <a [routerLink]="">Profile</a>
+      <a [routerLink]="">Messages</a>
+      <a [routerLink]="">Settings</a>
+    </div>
+
+    <div class="actions">
+      <i class="actions__item zmdi zmdi-search" (click)="toolbarSearch3 = true"></i>
+      <a [routerLink]="" class="actions__item zmdi zmdi-time hidden-xs-down"></a>
+      <div class="dropdown actions__item hidden-xs-down" dropdown>
+        <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+          <a [routerLink]="" class="dropdown-item">Last Modified</a>
+          <a [routerLink]="" class="dropdown-item">Name</a>
+          <a [routerLink]="" class="dropdown-item">Size</a>
+        </div>
+      </div>
+      <a [routerLink]="" class="actions__item zmdi zmdi-help-outline hidden-xs-down"></a>
+    </div>
+
+    <div *ngIf="toolbarSearch3" class="toolbar__search">
+      <input type="text" placeholder="Search...">
+      <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="toolbarSearch3 = false"></i>
+    </div>
+  </div>
+
+  <header class="content__title">
+    <h1>Toolbar Inner</h1>
+    <small>A toolbar can be also placed inside an existing card using the modifier class <code>.toolbar--inner</code></small>
+  </header>
+
+  <div class="card">
+    <div class="toolbar toolbar--inner">
+      <div class="toolbar__nav">
+        <a [routerLink]="">Profile</a>
+        <a [routerLink]="">Messages</a>
+        <a [routerLink]="">Settings</a>
+      </div>
+
+      <div class="actions">
+        <i class="actions__item zmdi zmdi-search" (click)="toolbarSearch4 = true"></i>
+        <a [routerLink]="" class="actions__item zmdi zmdi-time hidden-xs-down"></a>
+        <div class="dropdown actions__item hidden-xs-down" dropdown>
+          <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+          <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <a [routerLink]="" class="dropdown-item">Last Modified</a>
+            <a [routerLink]="" class="dropdown-item">Name</a>
+            <a [routerLink]="" class="dropdown-item">Size</a>
+          </div>
+        </div>
+        <a [routerLink]="" class="actions__item zmdi zmdi-help-outline hidden-xs-down"></a>
+      </div>
+
+      <div *ngIf="toolbarSearch4" class="toolbar__search">
+        <input type="text" placeholder="Search...">
+        <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="toolbarSearch4 = false"></i>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>Card contents...</p>
+    </div>
+  </div>
+</div>

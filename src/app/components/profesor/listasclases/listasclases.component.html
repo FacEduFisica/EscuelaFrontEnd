@@ -1,0 +1,105 @@
+<div class="content__inner " style="width: 100%" [hidden]="nuevaLista">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Mis cursos</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <td>Codigo Curso</td>
+            <td>Nombre Curso</td>
+            <td>Detalle</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let curso of cursos">
+            <th scope="row">{{curso.id_curso }}</th>
+            <th scope="row"> {{ curso.nombre }} </th>
+            <td> <button type="button" class="btn btn-success button"
+                (click)="calificar(curso.id_curso)">Detalle</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="content__inner " style="width: 100%" [hidden]="!nuevaLista">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Estudiantes</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+        <button type="button" class="btn btn-success button" (click)="listaClase()">Lista de clase</button>
+        <button type="button" class="btn btn-success button" (click)="atras()">Atras</button>
+      <!--<table class="table mb-0">
+        <thead>
+          <tr>
+            <td>Identificación</td>
+            <td>Nombre</td>
+            <td>Calificar</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let estudiante of listEstudiante">
+            <th scope="row">{{estudiante.numero_doc}}</th>
+            <th scope="row">{{estudiante.nombre_completo}} {{estudiante.apellidos}}</th>
+            <td> <button type="button" class="btn btn-success button"><img src="/assets/img/calificar.png" alt="" (click)="irCalificar(estudiante)" ></button>
+          </tr>
+        </tbody>
+      </table> 
+
+    -->
+    <div id="pdfTable" #pdfTable> 
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="numero_doc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Identificación </th>
+          <td mat-cell *matCellDef="let estudiante"> {{estudiante.numero_doc}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre_completo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let estudiante"> {{estudiante.nombre_completo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="calificar">
+          <th mat-header-cell *matHeaderCellDef> Calificar </th>
+          <mat-cell *matCellDef="let estudiante">
+            <button type="button" class="btn btn-success button"><img src="/assets/img/calificar.png" alt=""
+                (click)="irCalificar(estudiante)"></button>
+          </mat-cell>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+      </table>
+    </div>
+    <button type="button" class="btn btn-success button" (click)="sendAsistencia()">Enviar Asistencia de clase</button>
+    <button type="button" class="btn" (click)="exportPdf()">Exportar PDF</button>
+      <br>
+      <br>
+      <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+    </div>
+  </div>
+</div>

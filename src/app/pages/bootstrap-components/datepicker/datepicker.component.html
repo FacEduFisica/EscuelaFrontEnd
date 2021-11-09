@@ -1,0 +1,51 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Basic example with least configuration.</h6>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" placeholder="Pick a date" class="form-control" bsDatepicker [bsConfig]="bsConfig" [(ngModel)]="bsValue">
+            <i class="form-group__bar"></i>
+          </div>
+
+          <pre>Date: {{ bsValue }}</pre>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" placeholder="Pick another date" class="form-control" bsDatepicker [bsConfig]="bsConfig" [(ngModel)]="bsValue2">
+            <i class="form-group__bar"></i>
+          </div>
+
+          <pre>Date: {{ bsValue2 }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Date range picker</h4>
+      <h6 class="card-subtitle">Click on the input below to toggle the daterangepicker.</h6>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Pick a date" class="form-control" bsDaterangepicker [bsConfig]="bsConfig" [(ngModel)]="bsValueRange">
+            <i class="form-group__bar"></i>
+          </div>
+
+          <pre>Date: {{ bsValueRange }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

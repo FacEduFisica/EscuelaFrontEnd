@@ -1,0 +1,94 @@
+<div class="content__inner " style="width: 100%">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">{{estudiante.nombre_completo}} {{estudiante.apellidos}}
+    </h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="calificacionGroup" #calificacion="ngForm" (ngSubmit)="setCalificacion(calificacion)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Documento: {{estudiante.numero_doc}}</label>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Fecha de nacimiento: {{estudiante.fecha_nacimiento}}</label>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Programa:</label>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Acudiente: {{estudiante.nombre_acudiente}}</label>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Fecha: </label>
+              <div class="form-inline">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+                      formControlName="fecha">
+                    <div class="input-group-append">
+                      <button class="material-icons" calendar_today (click)="d.toggle()" type="button"><img
+                          src="assets/img/calendario.png" alt=""></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+
+        <div><label for="">Objetivos a Evaluar</label></div>
+        <ul>
+          <!-- <li *ngFor="let objetivo of cursos.objetivos">
+              {{objetivo}}
+              <select name="" id="">
+                <option value="">E</option>
+                <option value="">S</option>
+                <option value="">A</option>
+                <option value="">I</option>
+                <option value="">D</option>
+              </select>
+            </li> -->
+
+          <li *ngFor="let objetivo of objetivos; let i=index">
+            {{ objetivo.nombre }}
+            <select  (change)="onChange($event.target.value,objetivo.id_objetivo)">
+              <option></option>
+              <option value="E">E</option>
+              <option value="S">S</option>
+              <option value="A">A</option>
+              <option value="I">I</option>
+              <option value="D">D</option>
+            </select>
+          </li>
+        </ul>
+        <label for="obser">Observaciones</label>
+        <br>
+        <textarea name="" id="obser" cols="80" rows="10" formControlName="observacion"></textarea>
+        <br>
+        <button type="button" class="btn btn-success button"(click)=setCalificacion()>Guardar</button>
+        <button type="button" class="btn btn-success button">Cancelar</button>
+
+      </form>
+      <div *ngIf="mensaje" class="alert alert-success">
+          {{ mensaje }}
+      </div>
+    </div>
+  </div>
+</div>

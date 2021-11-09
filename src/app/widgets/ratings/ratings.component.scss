@@ -1,0 +1,45 @@
+@import "../../../assets/scss/scss-imports";
+
+.widget-ratings {
+  text-align: center;
+}
+
+.widget-ratings__average {
+  font-size: 1.5rem;
+  color: $gray-200;
+  margin-bottom: 1rem;
+
+  & > i {
+    margin: 0 0.1rem;
+  }
+
+  .active {
+    color: $amber;
+  }
+}
+
+.widget-ratings__item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.widget-ratings__star {
+  flex: 0 0 50px;
+  text-align: left;
+
+  & > i {
+    color: $amber;
+    font-size: 1.5rem;
+  }
+}
+
+.widget-ratings__progress {
+  flex: 1 1 auto;
+}
+
+.widget-ratings__count {
+  flex: 0 0 50px;
+  text-align: right;
+}

@@ -1,0 +1,323 @@
+<div class="content__inner content__inner--sm">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Nueva Inscripción</h2>
+  </nav>
+
+  <div class="card new-contact">
+    <div class="new-contact__header">
+      <!-- <a [routerLink]="" class="zmdi zmdi-camera new-contact__upload"></a> -->
+      <a><input type="file" class="zmdi zmdi-camera new-contact__upload" id="fileUpload"
+          (change)="onFileChange($event)"></a>
+      <img [src]="foto" class="new-contact__img" alt="">
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="newContactForm" #estudent="ngForm" (ngSubmit)="setStudent(estudent)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Tipo de Documento</label>
+              <div class="select">
+                <select class="form-control" formControlName="tipoDocumento">
+                  <option>Seleccione...</option>
+                  <option>CC</option>
+                  <option>TI</option>
+                  <option>CE</option>
+                  <option>Otro</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Número de documento</label>
+              <input type="text" class="form-control" formControlName="numeroDocumento" placeholder="i.e. John"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+              <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Lugar de Expedicion del documento</label>
+              <input type="text" class="form-control" formControlName="lugarExpedicionDocumento" placeholder="i.e. John"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+              <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="i.e. John"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+              <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Apellidos</label>
+              <input type="text" class="form-control" formControlName="apellidos" placeholder="i.e. Smith"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.lastName.errors }">
+              <div class="invalid-feedback" *ngIf="formSubmitted && f.lastName.errors">Last Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="">Fecha de nacimiento</label>
+            <div class="form-inline">
+              <div class="form-group">
+                <div class="input-group" (click)="onChangeDate()">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+                    formControlName="fechaNacimiento">
+                  <div class="input-group-append">
+                    <button class="material-icons" calendar_today (click)="d.toggle()" type="button"><img
+                        src="assets/img/calendario.png" alt=""></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Lugar de nacimiento</label>
+              <input type="text" class="form-control" formControlName="lugarNacimiento" placeholder="i.e. John"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+              <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Genero</label>
+              <div class="select">
+                <select class="form-control" formControlName="genero">
+                  <option>Seleccione...</option>
+                  <option>Femenino</option>
+                  <option>Masculino</option>
+                  <option>Otro</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Dirección de residencia</label>
+              <input type="text" class="form-control" formControlName="direccionResidencia" placeholder="i.e. John"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.firstName.errors }">
+              <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">First Name is
+                required</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Telefono</label>
+              <input type="text" class="form-control" placeholder="i.e. +14155552671" formControlName="telefono">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Correo electronico</label>
+              <input type="text" class="form-control" formControlName="correo" placeholder="i.e. smith@gmail.com"
+                [ngClass]="{ 'is-invalid': formSubmitted && f.emailAddress.errors }">
+              <div class="invalid-feedback" *ngIf="f.emailAddress.errors.required">Email is required</div>
+              <div class="invalid-feedback" *ngIf="f.emailAddress.errors.email">Email must be a valid
+                email address</div>
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>¿Estudia?</label>
+              <div class="select">
+                <select class="form-control" formControlName="estudia">
+                  <option>Seleccione...</option>
+                  <option>Si</option>
+                  <option>No</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Grado Escolar</label>
+              <div class="select">
+                <select class="form-control" formControlName="gradoEscolar">
+                  <option>Seleccione...</option>
+                  <option>Primaria incompleta</option>
+                  <option>Primaria completa</option>
+                  <option>Secundaria incompleta</option>
+                  <option>Secundaria completa</option>
+                  <option>Universitario</option>
+                  <option>Otro</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>EPS</label>
+              <div class="select">
+                <select class="form-control" formControlName="eps">
+                  <option>Seleccione...</option>
+                  <option>EPS Sura</option>
+                  <option>Medimas</option>
+                  <option>Aliansalud</option>
+                  <option>Sanitas</option>
+                  <option>Compensar EPS</option>
+                  <option>Salud Total</option>
+                  <option>Nueva EPS</option>
+                  <option>Coomeva EPS</option>
+                  <option>Famisanar</option>
+                  <option>Cruz Blanca</option>
+                  <option>SaludVida</option>
+                  <option>Otra</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Nombre Acudiente en caso de emergencia</label>
+              <input type="text" class="form-control" placeholder="i.e. +415 555 2671"
+                formControlName="nombreAcudiente">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Parentesco</label>
+              <input type="text" class="form-control" placeholder="i.e. +415 555 2671" formControlName="parentesco">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Celular</label>
+              <input type="text" class="form-control" placeholder="i.e. +415 555 2671" formControlName="celular">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+
+        <dl></dl>
+
+        <div style="text-align: center">
+          <h3>ANTECEDENTES DE SALUD</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck1">
+              <label class="checkbox__label" for="customCheck1">HIPERTENSIÓN</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck2">
+              <label class="checkbox__label" for="customCheck2">OBESIDAD</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck3">
+              <label class="checkbox__label" for="customCheck3">COLESTEROL</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck4">
+              <label class="checkbox__label" for="customCheck4">FRACTURAS</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck5">
+              <label class="checkbox__label" for="customCheck5">CIRUGIAS</label>
+            </div>
+          </div>
+          <div class="col-md-6" formArrayName="antecedentes">
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck6">
+              <label class="checkbox__label" for="customCheck6">DIABETES</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck7">
+              <label class="checkbox__label" for="customCheck7">ARTRITIS</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck8">
+              <label class="checkbox__label" for="customCheck8">OSTEOPOROSIS</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="customCheck9">
+              <label class="checkbox__label" for="customCheck9">OTRAS</label>
+            </div>
+            <div class="form-group">
+              <label>Cual?</label>
+              <input type="text" class="form-control" placeholder="Escriba que otras enfermedades">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+        <dl></dl><br><br>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Nombre del usuario que participa en algunos de nuestros programas</label>
+              <input type="text" class="form-control" placeholder="i.e. +415 555 2671">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Empresa</label>
+              <input type="text" class="form-control" placeholder="i.e. +415 555 2671" formControlName="empresa">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>Programa al que desea inscribirse</label>
+              <div class="select">
+                <select class="form-control" formControlName="programa">
+                  <option>Seleccione...</option>
+                  <option *ngFor="let program of programasEdadValida" [value]="program.id_curso">{{ program.nombre }}
+                    {{ program.nombre_program }} Hora [ {{ program.hora_min }} {{ program.hora_max}} ] [
+                    {{ program.edad_min }} {{ program.edad_max}} ] </option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Adjunte los siguientes documentos</h4>
+            <h6 class="card-subtitle">*Fotocopia de la cedula acudiente *Certificado Medico
+              *Certificado de la EPS</h6>
+
+            <dropzone class="dragndrop" [config]="DropzoneConfig" [message]="'Click o Arrastre los documentos a subir'"
+              (error)="onUploadError($event)" (success)="onUploadSuccess($event)" (addedFile)=addedFile($event)
+              (removedFile)="removedFile($event)">
+            </dropzone>
+
+          </div>
+        </div>
+
+        <div class="mt-5 text-center">
+          <button class="btn btn-success button" mat-button>Enviar inscripción</button>
+        </div>
+        <div *ngIf="alerta" class="alert alert-success">{{ mensaje }} </div>
+      </form>
+    </div>
+  </div>
+</div>

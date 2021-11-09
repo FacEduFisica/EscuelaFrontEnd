@@ -1,0 +1,49 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Static examples</h4>
+      <h6 class="card-subtitle">Basic progress bars will have style <code>primary</code> by default.</h6>
+
+      <div class="progressbar-demo">
+        <progressbar [value]="0"></progressbar>
+        <progressbar [value]="25"></progressbar>
+        <progressbar [value]="50"></progressbar>
+        <progressbar [value]="75"></progressbar>
+        <progressbar [value]="100"></progressbar>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Variants</h4>
+      <h6 class="card-subtitle">Use <code>type</code> attribute to change the background of the progress bar.</h6>
+
+      <div class="progressbar-demo">
+        <progressbar [value]="50" type="success"></progressbar>
+        <progressbar [value]="30" type="warning"></progressbar>
+        <progressbar [value]="70" type="info"></progressbar>
+        <progressbar [value]="40" type="danger"></progressbar>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Stacked</h4>
+      <h6 class="card-subtitle">Include multiple progress bars in a progress component if you need.</h6>
+
+      <progressbar class="progress" [value]="stacked" [max]="100"></progressbar>
+
+      <br>
+      <hr>
+
+      <button type="button" class="btn btn-primary" (click)="randomStacked()">Randomize</button>
+    </div>
+  </div>
+</div>

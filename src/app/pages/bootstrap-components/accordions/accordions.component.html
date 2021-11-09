@@ -1,0 +1,85 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic Example</h4>
+      <h6 class="card-subtitle">Click headers to expand/collapse content that is broken into logical sections, much like tabs.</h6>
+
+      <accordion class="accordion">
+        <accordion-group heading="Accordion item #1">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #2">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #3">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #4">
+          {{ accordionContent }}
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Disabled</h4>
+      <h6 class="card-subtitle">Disable an accordion group with <code>[isDisabled]</code> attribute.</h6>
+
+      <accordion class="accordion">
+        <accordion-group heading="Accordion item #1">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #2" [isDisabled]="'true'">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #3">
+          {{ accordionContent }}
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Initially opened</h4>
+      <h6 class="card-subtitle">You can also initially expand an accordion group with <code>[isOpen]</code> attribute.</h6>
+
+      <accordion class="accordion">
+        <accordion-group heading="Accordion item #1" [isOpen]="'true'">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #2">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #3">
+          {{ accordionContent }}
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Open only one at a time</h4>
+      <h6 class="card-subtitle">Use <code>[closeOthers]</code> attribute to open only one accordion group at a time.</h6>
+
+      <accordion class="accordion" [closeOthers]="'true'">
+        <accordion-group heading="Accordion item #1">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #2">
+          {{ accordionContent }}
+        </accordion-group>
+        <accordion-group heading="Accordion item #3">
+          {{ accordionContent }}
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</div>

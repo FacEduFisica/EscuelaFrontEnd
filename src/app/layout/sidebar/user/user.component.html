@@ -1,0 +1,9 @@
+<div class="user" *ngIf="loginService.isLoggedIn()">
+    <div class="user__info" (click)="userMenu = !userMenu" [class.active]="userMenu">
+        <img class="user__img" [src]="imgUrl == null ? './assets/demo/img/profile-pics/8.jpg':imgUrl" alt="Imagen del usuario">
+        <div class="user__name">{{ user.name }}</div>
+    </div>
+    <div *ngIf="userMenu" [@toggleUserMenu]="userMenu" class="user__menu">
+        <a (click)="logout()">Logout</a>
+    </div>
+</div>

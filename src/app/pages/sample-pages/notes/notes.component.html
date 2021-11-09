@@ -1,0 +1,70 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+        <small>{{ pageSubTitle }}</small>
+    </header>
+
+    <div class="toolbar">
+        <div class="toolbar__label"><span class="hidden-xs-down">Total</span> 35 Notes</div>
+
+        <div class="actions">
+            <i class="actions__item zmdi zmdi-search" (click)="noteSerach = true"></i>
+            <a [routerLink]="" class="actions__item zmdi zmdi-time"></a>
+            <div class="dropdown actions__item" dropdown>
+                <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                    <a [routerLink]="" class="dropdown-item">Last Modified</a>
+                    <a [routerLink]="" class="dropdown-item">Name</a>
+                    <a [routerLink]="" class="dropdown-item">Size</a>
+                </div>
+            </div>
+            <a [routerLink]="" class="actions__item zmdi zmdi-help-outline"></a>
+        </div>
+
+        <div class="toolbar__search" *ngIf="noteSerach">
+            <input type="text" placeholder="Search...">
+            <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="noteSerach = false"></i>
+        </div>
+    </div>
+
+    <div class="row notes">
+        <div *ngFor="let note of notes" class="col-sm-4 col-md-3 notes__item">
+            <a (click)="noteView.show()">
+                <div *ngIf="note.title != null" class="notes__title">
+                    {{ note.title }}
+                </div>
+                <div class="notes__body" [ngx-line-truncation]="note.title != null ? 4 : 2">
+                    {{ note.note }}
+                </div>
+            </a>
+            <div class="notes__actions" data-demo-action="delete-listing">
+                <i class="zmdi zmdi-delete"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note view -->
+    <div class="modal fade note-view" bsModal #noteView="bs-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="note-view__field">
+                    <input type="text" class="form-control" placeholder="Note Title" value="Maecenas faucibus mollis">
+                </div>
+
+                <quill-editor [modules]="modules"></quill-editor>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link">Save changes</button>
+                    <button type="button" class="btn btn-link" (click)="noteView.hide()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="load-more">
+        <a [routerLink]=""><i class="zmdi zmdi-refresh-alt"></i> Load more notes</a>
+    </div>
+
+    <button class="btn btn-danger btn--action zmdi zmdi-plus"></button>
+</div>

@@ -1,0 +1,24 @@
+<div class="card card--inverse widget-signups">
+    <div class="card-body">
+        <h4 class="card-title">Most Recent Signups</h4>
+        <h6 class="card-subtitle">Magna cursus malesuada lacinia</h6>
+
+        <div class="actions actions--inverse">
+            <div class="actions__item" dropdown>
+                <i dropdownToggle class="zmdi zmdi-more-vert"></i>
+                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                    <a [routerLink]="" class="dropdown-item">Refresh</a>
+                    <a [routerLink]="" class="dropdown-item">Manage Widgets</a>
+                    <a [routerLink]="" class="dropdown-item">Settings</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-signups__list">
+            <a *ngFor="let item of signUps" [tooltip]="item.name">
+                <img *ngIf="item.img" class="avatar-img" [src]="['./assets/demo/img/profile-pics/' + item.img]" alt="">
+                <div *ngIf="item.cap" class="avatar-char">{{ item.cap }}</div>
+            </a>
+        </div>
+    </div>
+</div>

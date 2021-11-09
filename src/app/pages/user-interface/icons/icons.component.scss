@@ -1,0 +1,21 @@
+// Following is only for demo purpose
+
+@import "../../../../assets/scss/scss-imports";
+
+.icons-demo {
+  .card-body {
+    .zmdi {
+      font-size: 1.7rem;
+      vertical-align: bottom;
+      margin-right: 1rem;
+    }
+
+    .col-sm-4 {
+      padding: 0.8rem 1.1rem;
+
+      &:hover {
+        background: $gray-100;
+      }
+    }
+  }
+}

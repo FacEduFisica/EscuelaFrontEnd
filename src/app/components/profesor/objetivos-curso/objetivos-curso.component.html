@@ -1,0 +1,50 @@
+<div class="content__inner " style="width: 100%">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Objetivos
+    </h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <form #objeti="ngForm" (ngSubmit)="saveObjetivos(objeti)" [formGroup]="objetivosGroup">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>Grupo</label>
+              <div class="select">
+                <select class="form-control" formControlName="curso">
+                  <option>Seleccione...</option>
+                  <option *ngFor="let curso of cursos" [value]="curso.id_curso">
+                    {{ curso.nombre }} - {{ curso.id_curso }} </option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngFor="let objetivo of objetivos">
+          <div class="col-md-8">
+            <span>{{ objetivo.objetivo }}</span>
+          </div>
+          <div class="col-md-1">
+            <span class="btn btn-success button" (click)="deleteObjetivo(objetivo.id)">X</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="objetivo" placeholder="Objetivo a evaluar">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div>
+          <button type="button" class="btn btn-success button" (click)="setObjetivo()">Agregar</button>
+          <button type="submit" class="btn btn-success button">Finalizar </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
+  </div>
+</div>

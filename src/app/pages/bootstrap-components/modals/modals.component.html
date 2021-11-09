@@ -1,0 +1,108 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Below is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body (required for padding), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.</h6>
+
+      <div class="modal-demo">
+        <div class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+              </div>
+              <div class="modal-body">
+                <p>Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis..</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-link">Save changes</button>
+                <button type="button" class="btn btn-link">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>Click on the button below to open the modal</p>
+
+      <button type="button" class="btn btn-primary" (click)="modal.show()">Static modal</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Modal sizes</h4>
+      <h6 class="card-subtitle">Modals have two optional sizes available via modifier classes</h6>
+
+      <div class="modal-button">
+        <button type="button" class="btn btn-primary" (click)="modal.show()">Default Modal</button>
+        <button type="button" class="btn btn-primary" (click)="modalSmall.show()">Small Modal</button>
+        <button type="button" class="btn btn-primary" (click)="modalLarge.show()">Large Modal</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modals -->
+
+  <!-- Default -->
+  <div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default modal</h4>
+        </div>
+        <div class="modal-body">
+          Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Save changes</button>
+          <button type="button" class="btn btn-link" (click)="modal.hide()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Small -->
+  <div class="modal fade" bsModal #modalSmall="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default modal</h4>
+        </div>
+        <div class="modal-body">
+          Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Save changes</button>
+          <button type="button" class="btn btn-link" (click)="modalSmall.hide()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large -->
+  <div class="modal fade" bsModal #modalLarge="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default modal</h4>
+        </div>
+        <div class="modal-body">
+          <p>Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis..</p>
+          <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Save changes</button>
+          <button type="button" class="btn btn-link" (click)="modalLarge.hide()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

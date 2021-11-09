@@ -1,0 +1,51 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+        <small>{{ searchResultsCount }} results found for '{{ searchKeyword }}' at request time {{ searchResultTime }}
+            seconds
+        </small>
+    </header>
+
+    <div class="card results">
+        <div class="results__header">
+            <div class="results__search">
+                <input type="text" placeholder="Search again...">
+            </div>
+
+            <nav class="nav nav-tabs results__nav">
+                <a class="nav-link active" [routerLink]="">Everything</a>
+                <a class="nav-link" [routerLink]="">Documents</a>
+                <a class="nav-link" [routerLink]="">Files</a>
+                <a class="nav-link" [routerLink]="">Contacts</a>
+                <a class="nav-link" [routerLink]="">Groups</a>
+                <a class="nav-link disabled" [routerLink]="">Photos</a>
+                <a class="nav-link disabled" [routerLink]="">Videos</a>
+            </nav>
+        </div>
+
+        <div class="listview listview--bordered listview--hover">
+            <a *ngFor="let item of searchResults" class="listview__item" [routerLink]="">
+                <div class="listview__content">
+                    <div class="listview__heading">{{ item.title }}</div>
+                    <p>{{ item.sub }}</p>
+                </div>
+            </a>
+
+            <div class="clearfix mb-3"></div>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item pagination-first"><a class="page-link" [routerLink]=""></a></li>
+            <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+
+            <li class="page-item" *ngFor="let page of [].constructor(searchPages); let i = index;" [class.active]="i == 0">
+                <a class="page-link" [routerLink]="">{{ i + 1 }}</a>
+            </li>
+
+            <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+            <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+    </nav>
+</div>

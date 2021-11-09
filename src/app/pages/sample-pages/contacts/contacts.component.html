@@ -1,0 +1,49 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="toolbar">
+        <div class="toolbar__nav">
+            <a [routerLink]="">Following</a>
+            <a [routerLink]="['/sample-pages/groups']">Groups</a>
+        </div>
+
+        <div class="actions">
+            <i class="actions__item zmdi zmdi-search" (click)="contactsSearch = true"></i>
+            <a [routerLink]="" class="actions__item zmdi zmdi-time hidden-xs-down"></a>
+            <div class="dropdown actions__item hidden-xs-down" dropdown>
+                <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                    <a [routerLink]="" class="dropdown-item">Last Modified</a>
+                    <a [routerLink]="" class="dropdown-item">Name</a>
+                    <a [routerLink]="" class="dropdown-item">Size</a>
+                </div>
+            </div>
+            <a [routerLink]="" class="actions__item zmdi zmdi-help-outline hidden-xs-down"></a>
+        </div>
+
+        <div *ngIf="contactsSearch" class="toolbar__search">
+            <input type="text" placeholder="Search...">
+            <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="contactsSearch = false"></i>
+        </div>
+    </div>
+
+    <div class="contacts row">
+        <div *ngFor="let contact of contactsItems" class="col-xl-2 col-lg-3 col-sm-4 col-6">
+            <div class="contacts__item">
+                <a [routerLink]="" class="contacts__img">
+                    <img [src]="['./assets/demo/img/contacts/'+contact.img]" alt="">
+                </a>
+
+                <div class="contacts__info">
+                    <strong>{{ contact.name }}</strong>
+                    <small>{{ contact.email }}</small>
+                </div>
+
+                <button class="contacts__btn">Following</button>
+            </div>
+        </div>
+    </div>
+</div>

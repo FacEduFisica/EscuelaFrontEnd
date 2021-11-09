@@ -1,0 +1,35 @@
+<div class="card widget-visitors">
+  <div class="card-body">
+    <h4 class="card-title">{{ title }}</h4>
+    <h6 class="card-subtitle">{{ subTitle }}</h6>
+
+    <div class="widget-visitors__stats">
+      <div>
+        <strong>{{ visitors24hour }}</strong>
+        <small>Visitor for last 24 hours</small>
+      </div>
+      <div>
+        <strong>{{ visitors30mins }}</strong>
+        <small>Visitors last 30 minutes</small>
+      </div>
+    </div>
+
+    <div JqvMap [options]="map" [height]="250"></div>
+  </div>
+
+  <div class="listview listview--striped">
+    <div *ngFor="let visitor of visitosDate" class="listview__item">
+      <div class="listview__content">
+        <p>{{ visitor.date }}</p>
+
+        <div class="listview__attrs">
+          <span><img class="widget-visitors__country" [src]="['./assets/demo/img/flags/'+visitor.flag]" alt=""> {{ visitor.country }}</span>
+          <span>{{ visitor.browser }}</span>
+          <span>{{ visitor.os }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-2"></div>
+  </div>
+</div>

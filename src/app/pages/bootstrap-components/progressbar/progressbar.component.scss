@@ -1,0 +1,9 @@
+// Following is only for demo purposes
+
+.progressbar-demo {
+  .progress {
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+}

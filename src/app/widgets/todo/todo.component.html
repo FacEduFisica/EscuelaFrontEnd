@@ -1,0 +1,35 @@
+<div class="card todo">
+  <div class="card-body">
+    <h4 class="card-title">{{ widgetTitle }}</h4>
+    <h6 class="card-subtitle">{{ widgetSubTitle }}</h6>
+  </div>
+
+  <div class="listview">
+    <div *ngFor="let list of todoLists | slice: 0:5; let i = index" class="listview__item">
+      <div class="checkbox checkbox--char todo__item">
+        <input type="checkbox" [id]="['todo-'+i]">
+        <label [for]="['todo-'+i]" [ngClass]="['checkbox__char bg-'+list.color]">{{ list.cap }}</label>
+
+        <div class="listview__content">
+          <div class="listview__heading">{{ list.title }}</div>
+          <p>{{ list.date }}</p>
+        </div>
+
+        <div class="listview__attrs">
+          <span *ngFor="let tag of list.tags">{{ tag }}</span>
+          <span>{{ list.priority }}</span>
+        </div>
+      </div>
+
+      <div class="actions listview__actions">
+        <div class="dropdown actions__item" dropdown>
+          <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
+            <a [routerLink]="" *ngFor="let action of todoListActions" class="dropdown-item">{{ action }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a [routerLink]="['/todo']" class="view-more">View More</a>
+  </div>
+</div>

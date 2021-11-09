@@ -1,0 +1,50 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngFor="let item of faqs" class="card">
+        <div class="card-header">{{ item.question }}</div>
+        <div class="card-body">
+          <p class="card-text">{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <form class="card">
+        <div class="card-body">
+          <h4 class="card-title">Write to us</h4>
+          <h6 class="card-subtitle">Aeneanquam ellentesque ornare lacinia</h6>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Full Name">
+            <i class="form-group__bar"></i>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email Address">
+            <i class="form-group__bar"></i>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Contact Number">
+            <i class="form-group__bar"></i>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control textarea-autosize" placeholder="Message"></textarea>
+            <i class="form-group__bar"></i>
+          </div>
+
+          <p class="mb-5">By sending us your information, you agree to Root’s Terms of Use & Privacy Policy.</p>
+
+          <div class="text-right">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

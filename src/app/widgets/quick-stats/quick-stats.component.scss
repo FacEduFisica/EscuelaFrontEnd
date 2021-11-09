@@ -1,0 +1,50 @@
+@import "../../../assets/scss/scss-imports";
+
+.quick-stats__item {
+  padding: 1.5rem 1.5rem 1.45rem;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 5px rgba(0,0,0,.08);
+  margin-bottom: $grid-gutter-width;
+  display: flex;
+  align-items: flex-start;
+}
+
+.quick-stats__info {
+  min-width: 0;
+
+  & > h2,
+  & > small {
+    line-height: 100%;
+    @include text-truncate();
+  }
+
+  & > h2 {
+    font-weight: normal;
+    margin: 0;
+    font-size: 1.3rem;
+    color: $white;
+  }
+
+  & > small {
+    font-size: 1rem;
+    display: block;
+    color: rgba($white, 0.8);
+    margin-top: 0.6rem;
+  }
+}
+
+.quick-stats__chart {
+  position: relative;
+  margin: 1px 0 0 auto;
+
+  @include media-breakpoint-between(sm, lg) {
+    display: none;
+  }
+
+  ::ng-deep {
+    .ct-bar {
+      stroke-width: 3;
+      stroke: $white;
+    }
+  }
+}

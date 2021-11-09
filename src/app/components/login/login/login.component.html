@@ -1,0 +1,61 @@
+
+
+  <div class="flex-center position-ref full-height">
+    <div class="top-right links">
+      <a href="">Home</a>
+      <a *ngIf="registered"  href="" (click)="atras()">atras</a>
+    </div>
+    
+
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+
+
+
+          <img src="assets/img/jaime_isaza_cadavid.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form *ngIf="!registered" [formGroup]="loginForm">
+          <input type="email" id="login" class="fadeIn second" formControlName="email" placeholder="Email">
+          <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Contraseña">
+          <input type="submit" (click)="loginUser()" class="fadeIn fourth" value="Log In">
+          <br>
+          <a  class="btn btn-google" (click)="register()">Registrarse</a>
+          <a  class="btn btn-google" [routerLink]="['/password/email']">¿Olvidó su contraseña?</a>
+          <div *ngIf="mensajeLogin" class="alert alert-success">{{ mensajeLogin }} </div>
+        </form>
+
+        <form *ngIf="registered" [formGroup]="registerForm">
+          <input type="text" class="fadeIn second" formControlName="nombre" placeholder="Nombre">
+          <input type="text" class="fadeIn third" formControlName="apellido" placeholder="Apellido">
+          <input type="text" class="fadeIn third" formControlName="email" placeholder="Email">
+          <input type="password" class="fadeIn third" formControlName="password" placeholder="Contraseña">
+          <input type="password" class="fadeIn third" formControlName="password_confirmation" placeholder="Confirmar Contraseña">
+          <input type="submit" (click)="registrarUser()" class="fadeIn fourth" value="Registrar">
+          <br>
+          <a  class="btn btn-google" (click)="atras()"> Login</a>
+          <div *ngIf="mensajeRegister" class="alert alert-success">{{ mensajeRegister }} </div>
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <div class="form-group">
+            <div class="col-md-7 col-md-offset-4">
+              <a  class="btn btn-google" (click)="socialSignIn('google')"><i class="fa fa-google"></i> Google</a>
+              <a  class="btn btn-google" (click)="socialSignIn('facebook')"><i class="fa fa-facebook-square"></i> Facebook</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+

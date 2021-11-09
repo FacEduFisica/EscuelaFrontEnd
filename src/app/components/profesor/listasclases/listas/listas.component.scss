@@ -1,0 +1,36 @@
+.titulo{
+    background-color: #196844;
+}
+.p {
+    font: 150% sans-serif;
+    color: white;
+  }
+  .button{
+      margin: 2px;
+      border-radius: 6px;
+  }
+
+  table thead {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+   
+  }
+
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+.cdk-visually-hidden
+{
+    visibility: hidden;
+}

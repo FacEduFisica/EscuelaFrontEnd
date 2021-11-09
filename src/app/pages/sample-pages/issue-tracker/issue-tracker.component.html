@@ -1,0 +1,197 @@
+<div class="content__inner">
+    <header class="content__title">
+        <h1>{{ pageTitle }}</h1>
+    </header>
+
+    <div class="card issue-tracker">
+        <div class="toolbar toolbar--inner">
+            <div class="toolbar__nav">
+                <a class="active" [routerLink]="">Opened 25</a>
+                <a [routerLink]="" class="hidden-sm-down">Responded 30</a>
+                <a [routerLink]="">Closed 19</a>
+            </div>
+
+            <div class="actions">
+                <i class="actions__item zmdi zmdi-search" tooltip="Search" (click)="issueTrackerSearch = true"></i>
+
+                <div class="dropdown actions__item hidden-sm-down" data-toggle="tooltip" data-title="Tag" dropdown [insideClick]="true">
+                    <i class="zmdi zmdi-label-alt-outline" dropdownToggle=""></i>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--sort" *dropdownMenu>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-tag-1" checked/>
+                            <label for="cb-tag-1" class="checkbox__label">All</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-tag-2"/>
+                            <label for="cb-tag-2" class="checkbox__label">Tag One</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-tag-3"/>
+                            <label for="cb-tag-3" class="checkbox__label">Tag Two</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-tag-4"/>
+                            <label for="cb-tag-4" class="checkbox__label">Tag Three</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown actions__item hidden-sm-down" tooltip="Severity" dropdown [insideClick]="true">
+                    <i class="zmdi zmdi-info-outline" dropdownToggle></i>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--sort" *dropdownMenu>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-severity-1" checked/>
+                            <label for="cb-severity-1" class="checkbox__label">All</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-severity-2"/>
+                            <label for="cb-severity-2" class="checkbox__label">Severe</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-severity-3"/>
+                            <label for="cb-severity-3" class="checkbox__label">High</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-severity-4"/>
+                            <label for="cb-severity-4" class="checkbox__label">Medium</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-severity-5"/>
+                            <label for="cb-severity-5" class="checkbox__label">Low</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown actions__item hidden-sm-down" tooltip="Project" dropdown [insideClick]="true">
+                    <i class="zmdi zmdi-book" dropdownToggle></i>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--sort" *dropdownMenu>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-1" checked/>
+                            <label for="cb-projects-1" class="checkbox__label">All Projects</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-2"/>
+                            <label for="cb-projects-2" class="checkbox__label">Projects 2</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-3"/>
+                            <label for="cb-projects-3" class="checkbox__label">Projects 3</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-4"/>
+                            <label for="cb-projects-4" class="checkbox__label">Projects 4</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-5"/>
+                            <label for="cb-projects-5" class="checkbox__label">Projects 5</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-projects-6"/>
+                            <label for="cb-projects-6" class="checkbox__label">Projects 6</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown actions__item hidden-sm-down" tooltip="Assignee" dropdown [insideClick]="true">
+                    <i class="zmdi zmdi-account-circle" dropdownToggle></i>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--active dropdown-menu--sort" *dropdownMenu>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-1" checked/>
+                            <label for="cb-assignee-1" class="checkbox__label">Everyone</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-2"/>
+                            <label for="cb-assignee-2" class="checkbox__label">David Wilson</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-3"/>
+                            <label for="cb-assignee-3" class="checkbox__label">James Frank</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-4"/>
+                            <label for="cb-assignee-4" class="checkbox__label">Natalie Sheth</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-5"/>
+                            <label for="cb-assignee-5" class="checkbox__label">Christian Robu</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="cb-assignee-6"/>
+                            <label for="cb-assignee-6" class="checkbox__label">Wins Williamson</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown actions__item hidden-sm-down" tooltip="Sort by" dropdown>
+                    <i class="zmdi zmdi-sort" dropdownToggle></i>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--active dropdown-menu--sort" *dropdownMenu>
+                        <a [routerLink]="" class="dropdown-item">Newest</a>
+                        <a [routerLink]="" class="dropdown-item">Oldest</a>
+                        <a [routerLink]="" class="dropdown-item">Most Commented</a>
+                        <a [routerLink]="" class="dropdown-item">Least Commented</a>
+                        <a [routerLink]="" class="dropdown-item">NewRecently Updatedest</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar__search" *ngIf="issueTrackerSearch">
+                <input type="text" placeholder="Search for issues...">
+                <i class="toolbar__search__close zmdi zmdi-long-arrow-left" (click)="issueTrackerSearch = false"></i>
+            </div>
+        </div>
+
+        <div class="listview listview--bordered">
+
+            <div *ngFor="let item of issueTrackers" class="listview__item">
+                <img *ngIf="item.op.img" [src]="['./assets/demo/img/contacts/'+item.op.img]" class="listview__img" alt="">
+                <i *ngIf="!item.op.img" [class]="['avatar-char bg-']+item.op.color">{{ item.op.cap }}</i>
+
+                <div class="listview__content text-truncate text-truncate">
+                    <a class="listview__heading" [routerLink]="">{{ item.title }}</a>
+                    <p>#{{ item.id }} Opened {{ item.timeSince || item.date }} ago by {{ item.op.name }}</p>
+                </div>
+
+                <div class="issue-tracker__item hidden-sm-down">
+                    <span [class]="['issue-tracker__tag bg-'+item.tag.color]">{{ item.tag.name }}</span>
+                </div>
+
+                <div class="issue-tracker__item hidden-md-down">
+                    <i class="zmdi zmdi-time"></i>{{ item.date }} at {{ item.time }}
+                </div>
+
+                <div class="issue-tracker__item hidden-md-down">
+                    <i class="zmdi zmdi-comments"></i> {{ item.comments }}
+                </div>
+
+                <div class="issue-tracker__item actions">
+                    <div class="dropdown actions__item" dropdown>
+                        <i class="zmdi zmdi-more-vert" dropdownToggle></i>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--icon" *dropdownMenu>
+                            <a *ngFor="let action of issueTrackerActions" [routerLink]="" class="dropdown-item"><i class="zmdi zmdi-check"></i>{{ action }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix m-4"></div>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item pagination-first"><a class="page-link" [routerLink]=""></a></li>
+            <li class="page-item pagination-prev"><a class="page-link" [routerLink]=""></a></li>
+
+            <li *ngFor="let page of [].constructor(issueTrackerPages); let i = index;" class="page-item" [class.active]="i == 0"><a class="page-link" [routerLink]="">{{ i + 1 }}</a></li>
+
+            <li class="page-item pagination-next"><a class="page-link" [routerLink]=""></a></li>
+            <li class="page-item pagination-last"><a class="page-link" [routerLink]=""></a></li>
+        </ul>
+    </nav>
+</div>

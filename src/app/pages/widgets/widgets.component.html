@@ -1,0 +1,44 @@
+<header class="content__title">
+    <h1>{{ widgetTitle }}</h1>
+    <small>{{ widgetSubTitle }}</small>
+
+    <div class="actions">
+        <a [routerLink]="" class="actions__item zmdi zmdi-trending-up"></a>
+        <a [routerLink]="" class="actions__item zmdi zmdi-check-all"></a>
+
+        <div class="dropdown actions__item" dropdown>
+            <i dropdownToggle class="zmdi zmdi-more-vert"></i>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                <a [routerLink]="" class="dropdown-item">Refresh</a>
+                <a [routerLink]="" class="dropdown-item">Manage Widgets</a>
+                <a [routerLink]="" class="dropdown-item">Settings</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<widget-quick-stats></widget-quick-stats>
+
+<div class="row">
+    <div class="col-lg-6">
+        <widget-sales-statistics></widget-sales-statistics>
+    </div>
+    <div class="col-lg-6">
+        <widget-growth-rate></widget-growth-rate>
+    </div>
+</div>
+
+<div class="widget-lists card-columns">
+    <widget-featured-post *ngFor="let noticia of noticias" [noticia]=noticia></widget-featured-post>
+    <widget-todo></widget-todo>
+    <widget-visitors></widget-visitors>
+    <!-- <widget-calendar></widget-calendar> -->
+    <widget-past-days></widget-past-days>
+    <widget-recent-posts></widget-recent-posts>
+    <widget-pie-grids></widget-pie-grids>
+    <widget-signups></widget-signups>
+    <widget-photos></widget-photos>
+    <widget-ratings></widget-ratings>
+    <widget-tasks></widget-tasks>
+    <widget-contact></widget-contact>
+</div>

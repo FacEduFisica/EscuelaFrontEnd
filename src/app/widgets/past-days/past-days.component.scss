@@ -1,0 +1,54 @@
+@import "../../../assets/scss/scss-imports";
+
+.widget-past {
+  background-color: $cyan;
+  overflow: hidden;
+}
+
+.widget-past__main {
+  position: relative;
+
+  &:after {
+    content: '';
+    @include size(100%, 45px);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, rgba($black, 0), #00BCD4);
+    pointer-events: none;
+  }
+
+  ::ng-deep {
+    .ct-series-a {
+      .ct-area {
+        fill: $white;
+        fill-opacity: 0.25;
+      }
+    }
+  }
+}
+
+.widget-past__info {
+  small {
+    font-size: 1rem;
+    color: rgba($white, 0.75);
+  }
+
+  h3 {
+    margin: 0;
+    color: $white;
+    font-weight: normal;
+  }
+}
+
+.widget-past__chart {
+  margin-left: auto;
+
+  ::ng-deep {
+    .ct-bar {
+      stroke-width: 3px;
+      stroke: $white;
+    }
+  }
+}

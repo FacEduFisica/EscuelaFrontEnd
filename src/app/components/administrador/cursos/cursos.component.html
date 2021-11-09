@@ -1,0 +1,179 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nuevoC">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Cursos</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-success button" (click)='nuevoCurso()'>Abrir Curso</button>
+      <button type="button" class="btn btn-success button" (click)='updateCurso()'>Actualizar Curso</button>
+      <button type="button" class="btn btn-success button" (click)='cerrarCurso()'>Cerrar Curso</button>
+      <button type="button" class="btn btn-success button" (click)='delete()'>Eliminar Curso</button>
+      <div id="pdfTable" #pdfTable class="tabla_admin">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 text-center">
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectOnlyOne(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Curso</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.nombre_curso}} </td>
+          </ng-container>
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.descripcion_curso}} </td>
+          </ng-container>
+          <ng-container matColumnDef="estado curso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.estado_curso}} </td>
+          </ng-container>
+          <ng-container matColumnDef="programa">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Programa</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.programa}} </td>
+          </ng-container>
+          <ng-container matColumnDef="profesor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Profesor</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.nombre_profesor}} </td>
+          </ng-container>
+          <ng-container matColumnDef="edad minima">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad min</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.edad_min}} </td>
+          </ng-container>
+          <ng-container matColumnDef="edad maxima">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad max</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.edad_max}} </td>
+          </ng-container>
+          <ng-container matColumnDef="cupos disponibles">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cupos</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.cupos_disponibles}} </td>
+          </ng-container>
+          <ng-container matColumnDef="hora inicial">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Inicio</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.hora_inicial}} </td>
+          </ng-container>
+          <ng-container matColumnDef="hora final">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fin</th>
+            <td mat-cell *matCellDef="let curso"> {{curso.hora_final}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <button type="button" class="btn" (click)="exportPdf()">Exportar</button>
+    </div>
+  </div>
+</div>
+<div class="content__inner " style="width: 100%" *ngIf="nuevoC">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Formulario Curso</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="newCourseForm" #curso="ngForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Programa</label>
+                <div class="select">
+                  <select class="form-control" formControlName="id_programa" [(ngModel)]='selectedProgram'>
+                    <option *ngFor="let programa of listPrograms" [value]="programa.id">{{ programa.nombre }}
+                    </option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Profesor</label>
+                <div class="select">
+                  <select class="form-control" formControlName="id_profesor" [(ngModel)]='selectedTeacher'>
+                    <option *ngFor="let profesor of profesores" [value]="profesor.id">
+                      {{ profesor.nombre_completo }}</option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" placeholder="Curso Natación Niños">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Programación</label>
+                <input type="text" class="form-control" formControlName="descripcion" placeholder="Lunes y Jueves">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Edad Mínima</label>
+                <input type="number" class="form-control" formControlName="edad_min" placeholder="10">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Edad Máxima</label>
+                <input type="number" class="form-control" formControlName="edad_max" placeholder="12">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Numero de cupos</label>
+                <input type="number" class="form-control" formControlName="cupos" placeholder="30">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Estado</label>
+                <select class="form-control" formControlName="estado" [(ngModel)]='selectedState'>
+                  <option value="Abierto">Abierto</option>
+                  <option value="Cerrado">Cerrado</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Hora inicio</label>
+                <input type="time" class="form-control" formControlName="hora_inicial">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Hora fin</label>
+                <input type="time" class="form-control" formControlName="hora_final">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+            <button *ngIf="!update" class="btn btn-success button" (click)="guardarCurso()">Guardar</button>
+            <button *ngIf="update" class="btn btn-success button" (click)="sendUpdateCurso()">Guardar</button>
+          </div>
+          <br>
+          <br>
+          <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

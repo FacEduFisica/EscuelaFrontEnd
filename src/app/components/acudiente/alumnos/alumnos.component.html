@@ -1,0 +1,31 @@
+<div class="content__inner " style="width: 100%" *ngIf="!mostrarEstudiante">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Historial</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-success button" (click)='nuevoAdulto()'>Inscribir me</button>
+      <button type="button" class="btn btn-success button" (click)='nuevoNino()'>Inscribir niño</button>
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <td>Nombre Programa</td>
+            <td>Documento</td>
+            <td>Nombre Completo</td>
+            <td>Edad</td>
+            <td>Seguimiento</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let estudiante of estudiantes">
+            <th scope="row">{{ estudiante.nombre }}</th>
+            <th scope="row">{{ estudiante.numero_doc }}</th>
+            <th scope="row">{{ estudiante.nombre_completo }}</th>
+            <th scope="row">{{ estudiante.fecha_nacimiento }}</th>
+            <td> <button type="button" class="btn btn-success button" (click)="verAlumno(estudiante.numero_doc,estudiante.id_curso)">Ver Estudiante</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<header class="content__title">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active row">
+              <img src="assets/img/bannerIndex.jpg" class="d-block w-100" style="width: 100%;height:auto;">
+          </div>
+        </div>
+      </div>
+</header>
+
+<!-- <widget-quick-stats></widget-quick-stats> -->
+<div class="card">
+    <div class="card-body">
+      <table class="table table-bordered mb-0">
+        <thead style="color: darkgoldenrod">
+        <tr>
+          <th>PROGRAMA</th>
+          <th>VALOR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let program of listPrograms" (click)="verDetalle(program.id)" [style.cursor]="'pointer'">
+          <td>  {{ program.nombre}} </td>
+          <td> ${{ program.valor | number:'4.0-5'}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<div class="widget-lists card-columns">
+    <widget-featured-post *ngFor="let noticia of noticias" [noticia]=noticia></widget-featured-post>
+    <!-- <widget-todo></widget-todo> -->
+    <!-- <widget-visitors></widget-visitors> -->
+    <!-- <widget-calendar></widget-calendar> -->
+    <!-- <widget-past-days></widget-past-days> -->
+    <!-- <widget-recent-posts></widget-recent-posts> -->
+    <!-- <widget-pie-grids></widget-pie-grids> -->
+</div>

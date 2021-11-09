@@ -1,0 +1,112 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nuevo">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Programas</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-success button" (click)='newPrograma()'>Nuevo Programa</button>
+      <button type="button" class="btn btn-success button" (click)='updateProgram()'>Actualizar Programa</button>
+      <button type="button" class="btn btn-success button" (click)='delete()'>Eliminar Programa</button>
+      <button type="button" class="btn btn-success button" (click)='verDetalle()'>Ver Detalle</button>
+
+      <div id="pdfTable" #pdfTable class="tabla_admin">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectOnlyOne(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let programa"> {{programa.nombre}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+            <td mat-cell *matCellDef="let programa"> {{programa.descripcion}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
+            <td mat-cell *matCellDef="let programa">${{programa.valor | number:'4.0-5'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let programa"> {{programa.estado}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectOnlyOne(row)"></tr>
+        </table>
+      </div>
+      <button type="button" class="btn" (click)="exportExcel()">Exportar Excel</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="content__inner " style="width: 100%" *ngIf="nuevo">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Formulario Programa</h2>
+  </nav>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="programContactForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Descripcion</label>
+                <input type="text" class="form-control" formControlName="descripcion">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Valor</label>
+                <input type="text" class="form-control" formControlName="valor">
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Estado</label>
+                <div class="select">
+                  <select class="form-control" formControlName="estado" [(ngModel)]='selectedState'>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success button" (click)="cancel()">Cancelar</button>
+            <button *ngIf="!update" class="btn btn-success button" (click)="saveProgram()">Guardar</button>
+            <button *ngIf="update" class="btn btn-success button" (click)="sendUpdateProgram()">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="mensajeRegister" class="alert alert-success">{{ mensajeRegister }} </div>
+  </div>
+</div>

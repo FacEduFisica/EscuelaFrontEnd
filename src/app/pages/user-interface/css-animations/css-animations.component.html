@@ -1,0 +1,25 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card-columns animations">
+
+    <div *ngFor="let animation of animations" class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{ animation.title }}</h4>
+        <h6 class="card-subtitle">Click on the buttons below to start the animation</h6>
+
+        <img class="animated" [ngClass]="animationClasses[animation.group]" [src]='["./assets/demo/img/headers/sm/"+animation.header]' alt="">
+
+        <div class="row">
+          <div *ngFor="let animationType of animation.types" class="col-sm-6">
+            <button class="btn btn-primary" (click)="setAnimationClass(animation.group, animationType)">{{ animationType }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

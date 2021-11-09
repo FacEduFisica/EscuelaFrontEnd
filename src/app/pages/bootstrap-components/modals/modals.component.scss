@@ -1,0 +1,20 @@
+// Following is only for demo purposes
+
+@import "../../../../assets/scss/scss-imports";
+
+.modal-demo {
+  background-color: $gray-100;
+  margin-bottom: 2rem;
+
+  .modal {
+    z-index: 0;
+    position: relative;
+    display: block;
+  }
+}
+
+.modal-button {
+  .btn {
+    margin: 0 1rem 1rem 0;
+  }
+}

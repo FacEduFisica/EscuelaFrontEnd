@@ -1,0 +1,106 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Basic rating to with <code>read-only</code> state display number of stars.</h6>
+
+      <rating
+        class="rating"
+        [(ngModel)]="ratingModel"
+        [max]="10"
+        [readonly]="true">
+      </rating>
+
+      <br>
+      <br>
+
+      <pre>{{ ratingModel }}</pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Dynamic rating</h4>
+      <h6 class="card-subtitle">You can set your own start values in a dynamic rating.</h6>
+
+      <rating
+        class="rating"
+        [(ngModel)]="ratingModel"
+        [max]="10"
+        (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
+        [titles]="['one','two','three']">
+      </rating>
+
+      <br>
+      <br>
+
+      <pre>Rate: {{ ratingModel }};  Hovering over: {{ overStar || "none" }}</pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Custom icons and colors</h4>
+      <h6 class="card-subtitle">You can use custom icons from <a [routerLink]="['/user-interface/icons']">/user-interface/icons</a> page as shown in the below examples.</h6>
+
+      <div class="rating-demo">
+        <rating
+          class="rating text-red"
+          [max]="10"
+          [(ngModel)]="ratingModel"
+          [customTemplate]="customRating">
+        </rating>
+
+        <rating
+          class="rating text-blue"
+          [max]="10"
+          [(ngModel)]="ratingModel"
+          [customTemplate]="customRating2">
+        </rating>
+
+        <rating
+          class="rating text-green"
+          [max]="10"
+          [(ngModel)]="ratingModel"
+          [customTemplate]="customRating3">
+        </rating>
+
+        <rating
+          class="rating text-orange"
+          [max]="10"
+          [(ngModel)]="ratingModel"
+          [customTemplate]="customRating4">
+        </rating>
+      </div>
+
+      <br>
+
+      <pre>rate: {{ ratingModel }}</pre>
+
+      <ng-template #customRating let-index="index" let-value="value">
+        <i class="zmdi zmdi-{{ index < value ? 'circle' : 'circle-o' }}"></i>
+      </ng-template>
+
+      <ng-template #customRating2 let-index="index" let-value="value">
+        <i class="zmdi zmdi-{{ index < value ? 'check-all' : 'check' }}"></i>
+      </ng-template>
+
+      <ng-template #customRating3 let-index="index" let-value="value">
+        <i class="zmdi zmdi-{{ index < value ? 'favorite' : 'favorite-outline' }}"></i>
+      </ng-template>
+
+      <ng-template #customRating4 let-index="index" let-value="value">
+        <i class="zmdi zmdi-{{ index < value ? 'check-square' : 'square-o' }}"></i>
+      </ng-template>
+
+    </div>
+  </div>
+
+</div>

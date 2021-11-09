@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-body__title mb-4">About {{ aboutInfo.name }}</h4>
+
+    <p>{{ aboutInfo.about }}</p>
+    <p>{{ aboutInfo.aboutMore }}</p>
+
+    <br>
+
+    <h4 class="card-body__title mb-4">Contact Information</h4>
+
+    <ul class="icon-list">
+      <li *ngFor="let contact of aboutInfo.contacts"><i [class]="['zmdi zmdi-'+contact.icon]"></i>{{ contact.value }}</li>
+    </ul>
+  </div>
+</div>

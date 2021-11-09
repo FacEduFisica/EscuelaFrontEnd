@@ -1,0 +1,107 @@
+<div class="content__inner " style="width: 100%" *ngIf="!nuevoN && !detalle">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Noticias</h2>
+  </nav>
+
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-success button" (click)='nuevaNoticia()'>Nueva Noticia</button>
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Subtitulo</th>
+            <th>Tema</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let noticia of noticias">
+            <td>{{ noticia.titulo}}</td>
+            <td>{{ noticia.subtitulo}}</td>
+            <td>{{ noticia.tema}}</td>
+            <td>
+              <button type="button" class="btn btn-success button" (click)='verDetalle(noticia.id)'>Ver Detalle</button>
+              <button type="button" class="btn btn-success button" (click)='editar(noticia.id)'>Actualizar</button>
+              <button type="button" class="btn btn-success button" (click)='delete(noticia.id)'>Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="content__inner " style="width: 100%" *ngIf="nuevoN">
+  <nav class="navbar navbar-expand-lg titulo">
+    <h2 class="p">Formulario Noticia</h2>
+  </nav>
+  <div class="card new-contact">
+    <div *ngIf="!update" class="new-contact__header">
+      <a><input type="file" class="zmdi zmdi-camera new-contact__upload" id="fileUpload" accept=".png, .jpg, .jpeg"
+          (change)="onFileChange($event)"></a>
+      <img [src]="foto" class="new-contact__img" alt="">
+    </div>
+    <div *ngIf="update" class="mr-auto ml-auto" style="width: 30rem;">
+      <img class="card-img-top" [src]="noticia.imagen" [alt]="noticia.titulo">
+    </div>
+    <form [formGroup]="noticiasForm">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Título</label>
+              <input type="text" class="form-control" formControlName="titulo">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Subtítulo</label>
+              <input type="text" class="form-control" formControlName="subtitulo">
+            </div>
+            <i class="form-group__bar"></i>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Tema</label>
+              <input type="text" class="form-control" formControlName="tema">
+            </div>
+            <i class="form-group__bar"></i>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Contenido</label>
+              <textarea class="form-control" formControlName="contenido" cols="100" rows="5"></textarea>
+            </div>
+            <i class="form-group__bar"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success button" (click)="cancelar()">Cancelar</button>
+        <button *ngIf="!update" class="btn btn-success button" (click)="setNoticias()">Guardar</button>
+        <button *ngIf="update" class="btn btn-success button" (click)="sendUpdateNoticia(noticia.id)">Guardar</button>
+      </div>
+      <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
+    </form>
+  </div>
+</div>
+
+<div class="content__inner " style="width: 100%" *ngIf="detalle">
+  <div class="card" style="width: 35rem;">
+    <div class="card-body">
+      <button class="btn btn-success button mb-4" (click)="volver()">Atrás</button>
+      <div class="card text-center">
+        <nav class="navbar navbar-expand-lg titulo">
+          <h2 class="p">{{noticia.titulo}}</h2>
+        </nav>
+        <img class="card-img-top" [src]="noticia.imagen" [alt]="noticia.titulo">
+        <div class="card-body">
+          <p>{{noticia.subtitulo}}</p>
+          <p>{{noticia.tema}}</p>
+          <p>{{noticia.contenido}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

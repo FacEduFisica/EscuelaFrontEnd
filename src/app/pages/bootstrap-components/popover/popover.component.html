@@ -1,0 +1,123 @@
+<div class="content__inner">
+  <header class="content__title">
+    <h1>{{ pageTitle }}</h1>
+    <small>{{ pageSubTitle }}</small>
+  </header>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Click on the button below to toggle the Popover</h6>
+
+      <button
+                type="button"
+                class="btn btn-primary"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Toggle Popover
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic example</h4>
+      <h6 class="card-subtitle">Add Popover title using attribute <code>popoverTitle</code></h6>
+
+      <button
+                type="button"
+                class="btn btn-primary"
+                popoverTitle="Popover title"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Toggle Popover with title
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">All four directions</h4>
+      <h6 class="card-subtitle">Four positioning options are available: top, right, bottom, and left aligned.</h6>
+
+      <div class="popover-demo">
+        <button
+                type="button"
+                class="btn btn-primary"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                popoverTitle="Popover on top"
+                placement="top">
+          Popover on top
+        </button>
+
+        <button
+                type="button"
+                class="btn btn-primary"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                popoverTitle="Popover on right"
+                placement="right">
+          Popover on right
+        </button>
+
+        <button
+                type="button"
+                class="btn btn-primary"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                popoverTitle="Popover on left"
+                placement="left">
+          Popover on left
+        </button>
+
+        <button
+                type="button"
+                class="btn btn-primary"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                popoverTitle="Popover on bottom"
+                placement="bottom">
+          Popover on bottom
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Custom triggers</h4>
+      <h6 class="card-subtitle">Custom trigger modes such as hover, double click etc.</h6>
+
+      <div class="popover-demo">
+        <button type="button" class="btn btn-primary"
+                popover="I will hide on blur"
+                triggers="mouseenter:mouseleave">
+          Hover over me!
+        </button>
+        <button type="button" class="btn btn-primary"
+                popover="Double click one more time"
+                triggers="dblclick">
+          Double click me!
+        </button>
+
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Show popover on input change"
+                 popover="I will hide on blur"
+                 triggers="keypress:focusout">
+          <i class="form-group__bar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Outside click</h4>
+      <h6 class="card-subtitle">Popover can be configured to close when click outside.</h6>
+
+      <button type="button" class="btn btn-primary"
+              popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+              [outsideClick]="true">
+        Toggle popover and click outside to close
+      </button>
+
+    </div>
+  </div>
+</div>
