@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LoginService {
-  url = "http://escuelanosotros.poli/api";
+  //url = "http://escuelanosotros.poli/api";
   //url = "http://escuela.poli";
+  url = "http://localhost:8000/api";
   expiresAt;
   accessToken;
   userProfile;
   authenticated;
-  constructor(private http: HttpClient, private router: Router, ) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   saveGmailUser(userAuthGmail) {
     return this.http.post(`${this.url}/usuario`, userAuthGmail);
@@ -50,7 +51,7 @@ export class LoginService {
     // this.userProfile = profile;
     // this.authenticated = true;
   }
-  
+
   getRol() {
     this.userProfile = JSON.parse(localStorage.getItem("AuthUser"));
     if (this.userProfile) {
@@ -62,18 +63,18 @@ export class LoginService {
     return this.http.get(`${this.url}/logout`);
   }
   isGuardian(): boolean {
-    return (this.getRol() === 'Admin');
+    return this.getRol() === "Admin";
   }
   isLoggedIn(): boolean {
     this.userProfile = JSON.parse(localStorage.getItem("AuthUser"));
     if (this.userProfile) {
-      return true
+      return true;
     } else {
       return false;
     }
   }
   isAuthorized(idRol): boolean {
-    if (idRol === '') {
+    if (idRol === "") {
       return false;
     } else if (this.getRol() == idRol) {
       return true;
@@ -98,14 +99,16 @@ export class LoginService {
     return this.http.delete(`${this.url}/usuario/${id}`);
   }
   forgotPassword(email) {
-    return this.http.post<any>(`${this.url}/password/email`,email);
+    return this.http.post<any>(`${this.url}/password/email`, email);
   }
   resetPassword(body, token) {
-    return this.http.post<any>(`${this.url}/password/reset?token=${token}`,body);
+    return this.http.post<any>(
+      `${this.url}/password/reset?token=${token}`,
+      body
+    );
   }
 
   departamentos() {
-    return this.http.get('../../assets/json/colombia.json');
+    return this.http.get("../../assets/json/colombia.json");
   }
 }
-
