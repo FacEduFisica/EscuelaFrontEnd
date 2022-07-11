@@ -52,6 +52,11 @@ export class EstudianteService {
     return this.http.post(`${this.url}/estudiante/kid`, estudiante);
   }
 
+  setMatricula(matricula): Observable<any> {
+    console.log(matricula);
+    return this.http.post(`${this.url}/matricula`, matricula);
+  }
+
   getEstudianteByDoc(doc): Observable<any> {
     return this.http.post(`${this.url}/estudiantes/estudentbyid`, doc);
   }

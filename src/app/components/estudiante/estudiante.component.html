@@ -1,454 +1,658 @@
 <nav class="navbar navbar-expand-lg titulo">
-    <h2 class="p">Nueva Inscripción</h2>
+  <h2 class="p">Nueva Inscripción</h2>
 </nav>
 <div class="card">
-    <div class="card-body">
-        <form *ngIf="!respuesta && isAdmin()" class="text-center" [formGroup]="existeAcudienteFormGroup">
-            <p>Para continuar, por favor indique si el Acudiente existe en nuestro sistema</p>
-            <p>¿Existe Acudiente en el Sistema?</p>
-            <div class="col-md-6 mx-auto">
+  <div class="card-body">
+    <form
+      *ngIf="!respuesta && isAdmin()"
+      class="text-center"
+      [formGroup]="existeAcudienteFormGroup"
+    >
+      <p>
+        Para continuar, por favor indique si el Acudiente existe en nuestro
+        sistema
+      </p>
+      <p>¿Existe Acudiente en el Sistema?</p>
+      <div class="col-md-6 mx-auto">
+        <div class="form-group">
+          <div class="select">
+            <select class="form-control" formControlName="existe">
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+            <i class="form-group__bar"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success button" (click)="validarAcudiente()">
+          Enviar
+        </button>
+      </div>
+    </form>
+    <mat-horizontal-stepper *ngIf="respuesta" labelPosition="bottom" #stepper>
+      <mat-step [stepControl]="acudienteFormGroup">
+        <form
+          *ngIf="existeAcudienteFormGroup.value.existe == 'no' || !isAdmin()"
+          [formGroup]="acudienteFormGroup"
+          #acudiente="ngForm"
+          (ngSubmit)="setAcudientes(acudiente)"
+        >
+          <ng-template matStepLabel>Datos Acudiente</ng-template>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
                 <div class="form-group">
-                    <div class="select">
-                        <select class="form-control" formControlName="existe">
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                        <i class="form-group__bar"></i>
-                    </div>
+                  <label>Nombre Acudiente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombreAcudiente"
+                  />
+                  <i class="form-group__bar"></i>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Apellido Acudiente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="apellidoAcudiente"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Parentesco</label>
+                  <select formControlName="parentesco" class="form-control">
+                    <option value="Padre">Padre</option>
+                    <option value="Madre">Madre</option>
+                    <option value="Abuelo">Abuelo</option>
+                    <option value="Abuela">Abuela</option>
+                    <option value="Hermano">Hermano</option>
+                    <option value="Hermana">Hermana</option>
+                    <option value="Tio">Tío</option>
+                    <option value="Tia">Tía</option>
+                    <option value="Primo">Primo</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Celular Acudiente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="numero_contacto_emergencia"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Correo electrónico Acudiente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="emailAcudiente"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Empresa</label>
+                  <div class="select">
+                    <select class="form-control" formControlName="id_empresa">
+                      <option
+                        *ngFor="let empresa of empresas"
+                        [value]="empresa.id"
+                      >
+                        {{ empresa.nombre }}
+                      </option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-                <button class="btn btn-success button" (click)="validarAcudiente()">Enviar</button>
-            </div>
+          </div>
+          <div>
+            <button class="btn btn-success button" mat-button matStepperNext>
+              Continuar
+            </button>
+          </div>
         </form>
-        <mat-horizontal-stepper *ngIf="respuesta" labelPosition="bottom" #stepper>
-            <mat-step [stepControl]="acudienteFormGroup">
-                <form *ngIf="existeAcudienteFormGroup.value.existe =='no' || !isAdmin()" [formGroup]="acudienteFormGroup" #acudiente="ngForm" (ngSubmit)="setAcudientes(acudiente)">
-                    <ng-template matStepLabel>Datos Acudiente</ng-template>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre Acudiente</label>
-                                    <input type="text" class="form-control" formControlName="nombreAcudiente">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellido Acudiente</label>
-                                    <input type="text" class="form-control" formControlName="apellidoAcudiente">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Parentesco</label>
-                                    <select formControlName="parentesco" class="form-control">
-                                        <option value="Padre">Padre</option>
-                                        <option value="Madre">Madre</option>
-                                        <option value="Abuelo">Abuelo</option>
-                                        <option value="Abuela">Abuela</option>
-                                        <option value="Hermano">Hermano</option>
-                                        <option value="Hermana">Hermana</option>
-                                        <option value="Tio">Tío</option>
-                                        <option value="Tia">Tía</option>
-                                        <option value="Primo">Primo</option>
-                                        <option value="Otro">Otro</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Celular Acudiente</label>
-                                    <input type="text" class="form-control" formControlName="numero_contacto_emergencia">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Correo electrónico Acudiente</label>
-                                    <input type="text" class="form-control" formControlName="emailAcudiente">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Empresa</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="id_empresa">
-                                            <option *ngFor="let empresa of empresas" [value]="empresa.id">
-                                                {{ empresa.nombre }}</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                    </div>
-                </form>
 
-                <form *ngIf="existeAcudienteFormGroup.value.existe =='si'" #acudiente="ngForm" [formGroup]="fullAcudienteFormGroup" (ngSubmit)="setAcudiente(acudiente)">
-                    <ng-template matStepLabel>Datos Acudiente</ng-template>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Acudiente</label>
-                                <div class="select">
-                                    <select class="form-control" formControlName="acudiente">
-                                        <option *ngFor="let acudiente of acudientes" [value]="acudiente.id">
-                                            {{ acudiente.nombre }} {{acudiente.apellido}} | {{acudiente.email}}</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Parentesco</label>
-                                <select formControlName="parentesco" class="form-control">
-                                    <option value="Padre">Padre</option>
-                                    <option value="Madre">Madre</option>
-                                    <option value="Abuelo">Abuelo</option>
-                                    <option value="Abuela">Abuela</option>
-                                    <option value="Hermano">Hermano</option>
-                                    <option value="Hermana">Hermana</option>
-                                    <option value="Tio">Tío</option>
-                                    <option value="Tia">Tía</option>
-                                    <option value="Primo">Primo</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                                <i class="form-group__bar"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Celular Acudiente</label>
-                                <input type="text" class="form-control" formControlName="numero_contacto_emergencia">
-                                <i class="form-group__bar"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Empresa</label>
-                                <div class="select">
-                                    <select class="form-control" formControlName="id_empresa">
-                                        <option *ngFor="let empresa of empresas" [value]="empresa.id">
-                                            {{ empresa.nombre }}</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                    </div>
-                </form>
-            </mat-step>
+        <form
+          *ngIf="existeAcudienteFormGroup.value.existe == 'si'"
+          #acudiente="ngForm"
+          [formGroup]="fullAcudienteFormGroup"
+          (ngSubmit)="setAcudiente(acudiente)"
+        >
+          <ng-template matStepLabel>Datos Acudiente</ng-template>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Acudiente</label>
+                <div class="select">
+                  <select class="form-control" formControlName="acudiente">
+                    <option
+                      *ngFor="let acudiente of acudientes"
+                      [value]="acudiente.id"
+                    >
+                      {{ acudiente.nombre }} {{ acudiente.apellido }} |
+                      {{ acudiente.email }}
+                    </option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Parentesco</label>
+                <select formControlName="parentesco" class="form-control">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  <option value="Abuelo">Abuelo</option>
+                  <option value="Abuela">Abuela</option>
+                  <option value="Hermano">Hermano</option>
+                  <option value="Hermana">Hermana</option>
+                  <option value="Tio">Tío</option>
+                  <option value="Tia">Tía</option>
+                  <option value="Primo">Primo</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Celular Acudiente</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="numero_contacto_emergencia"
+                />
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Empresa</label>
+                <div class="select">
+                  <select class="form-control" formControlName="id_empresa">
+                    <option
+                      *ngFor="let empresa of empresas"
+                      [value]="empresa.id"
+                    >
+                      {{ empresa.nombre }}
+                    </option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success button" mat-button matStepperNext>
+              Continuar
+            </button>
+          </div>
+        </form>
+      </mat-step>
 
-            <mat-step [stepControl]="datosNinoFormGroup">
-                <form [formGroup]="datosNinoFormGroup" #nino="ngForm" (ngSubmit)="setNino(nino)">
-                    <ng-template matStepLabel>información del niño</ng-template>
-                    <div class="new-contact__header">
-                        <a><input type="file" class="zmdi zmdi-camera " id="fileUpload" (change)="onFileChange($event)"></a>
-                        <img [src]="foto" class="new-contact__img" alt="">
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Tipo de Documento</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="tipo_documento">
-                                            <option disabled>Seleccione...</option>
-                                            <option>CC</option>
-                                            <option>TI</option>
-                                            <option>CE</option>
-                                            <option>Otro</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Número de documento</label>
-                                    <input type="text" class="form-control" formControlName="numero_documento">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Departamento de Expedición del documento</label>
-                                    <select type="text" class="form-control" formControlName="departamento_expedicion" (ngModelChange)="selectDepartamento($event)">
-                                        <option value="0" selected disabled>Departamento</option>
-                                        <option *ngFor="let departamento of listDepartamentos"
-                                            [value]="departamento.departamento">{{departamento.departamento}}</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Municipio de Expedición del documento</label>
-                                    <select type="text" class="form-control" formControlName="municipio_expedicion">
-                                        <option value="0" selected disabled>Municipio</option>
-                                        <option *ngFor="let ciudad of listCiudadesDepartamento" [value]="ciudad">
-                                            {{ciudad}}</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre completo</label>
-                                    <input type="text" class="form-control" formControlName="nombre">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
+      <mat-step [stepControl]="datosNinoFormGroup">
+        <form
+          [formGroup]="datosNinoFormGroup"
+          #nino="ngForm"
+          (ngSubmit)="setNino(nino)"
+        >
+          <ng-template matStepLabel>información del niño</ng-template>
+          <div class="new-contact__header">
+            <a
+              ><input
+                type="file"
+                class="zmdi zmdi-camera"
+                id="fileUpload"
+                (change)="onFileChange($event)"
+            /></a>
+            <img [src]="foto" class="new-contact__img" alt="" />
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Tipo de Documento</label>
+                  <div class="select">
+                    <select
+                      class="form-control"
+                      formControlName="tipo_documento"
+                    >
+                      <option disabled>Seleccione...</option>
+                      <option>CC</option>
+                      <option>TI</option>
+                      <option>CE</option>
+                      <option>Otro</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Número de documento</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="numero_documento"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Departamento de Expedición del documento</label>
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="departamento_expedicion"
+                    (ngModelChange)="selectDepartamento($event)"
+                  >
+                    <option value="0" selected disabled>Departamento</option>
+                    <option
+                      *ngFor="let departamento of listDepartamentos"
+                      [value]="departamento.departamento"
+                    >
+                      {{ departamento.departamento }}
+                    </option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Municipio de Expedición del documento</label>
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="municipio_expedicion"
+                  >
+                    <option value="0" selected disabled>Municipio</option>
+                    <option
+                      *ngFor="let ciudad of listCiudadesDepartamento"
+                      [value]="ciudad"
+                    >
+                      {{ ciudad }}
+                    </option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Nombre completo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellidos</label>
-                                    <input type="text" class="form-control" formControlName="apellido">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Fecha de nacimiento</label>
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="date" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" formControlName="fecha_nacimiento">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Lugar de nacimiento</label>
-                                    <input type="text" class="form-control" formControlName="lugar_nacimiento">
-                                </div>
-                                <i class="form-group__bar"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Genero</label>
-                                <div class="select">
-                                    <select class="form-control" formControlName="genero">
-                                        <option disabled>Seleccione...</option>
-                                        <option>Femenino</option>
-                                        <option>Masculino</option>
-                                        <option>Otro</option>
-                                    </select>
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Telefono</label>
-                                <input type="text" class="form-control" formControlName="telefono">
-                                <i class="form-group__bar"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label>Dirección de residencia</label>
-                                <input type="text" class="form-control" formControlName="direccion">
-                                <i class="form-group__bar"></i>
-                            </div>
-                        </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Apellidos</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="apellido"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Fecha de nacimiento</label>
+                <div class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        type="date"
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                        formControlName="fecha_nacimiento"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Lugar de nacimiento</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="lugar_nacimiento"
+                  />
+                </div>
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Genero</label>
+                <div class="select">
+                  <select class="form-control" formControlName="genero">
+                    <option disabled>Seleccione...</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                    <option>Otro</option>
+                  </select>
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Telefono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="telefono"
+                />
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Dirección de residencia</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="direccion"
+                />
+                <i class="form-group__bar"></i>
+              </div>
+            </div>
 
-                        <div>
-                            <button class="btn btn-success button" mat-button matStepperPrevious>Atras</button>
-                            <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                        </div>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="infoAcademicaFormGroup">
-                <form [formGroup]="infoAcademicaFormGroup" #infoAcademica="ngForm" (ngSubmit)="setInfoAcademica(infoAcademica)">
-                    <ng-template matStepLabel>Informacion academica</ng-template>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>¿Estudia?</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="estudia">
-                                            <option disabled>Seleccione...</option>
-                                            <option value="Si">Si</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Grado Escolar</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="grado_escolar">
-                                            <option disabled>Seleccione...</option>
-                                            <option>Primaria incompleta</option>
-                                            <option>Primaria completa</option>
-                                            <option>Secundaria incompleta</option>
-                                            <option>Secundaria completa</option>
-                                            <option>Universitario</option>
-                                            <option>Otro</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre del establecimiento</label>
-                                    <input type="text" class="form-control" formControlName="nombre_establecimiento">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
+            <div>
+              <button
+                class="btn btn-success button"
+                mat-button
+                matStepperPrevious
+              >
+                Atras
+              </button>
+              <button class="btn btn-success button" mat-button matStepperNext>
+                Continuar
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="infoAcademicaFormGroup">
+        <form
+          [formGroup]="infoAcademicaFormGroup"
+          #infoAcademica="ngForm"
+          (ngSubmit)="setInfoAcademica(infoAcademica)"
+        >
+          <ng-template matStepLabel>Informacion academica</ng-template>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>¿Estudia?</label>
+                  <div class="select">
+                    <select class="form-control" formControlName="estudia">
+                      <option disabled>Seleccione...</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Grado Escolar</label>
+                  <div class="select">
+                    <select
+                      class="form-control"
+                      formControlName="grado_escolar"
+                    >
+                      <option disabled>Seleccione...</option>
+                      <option>Primaria incompleta</option>
+                      <option>Primaria completa</option>
+                      <option>Secundaria incompleta</option>
+                      <option>Secundaria completa</option>
+                      <option>Universitario</option>
+                      <option>Otro</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Nombre del establecimiento</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre_establecimiento"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Establecimiento</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="tipo_establecimiento">
-                                            <option disabled>Seleccione...</option>
-                                            <option>Oficial</option>
-                                            <option>Privado</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperPrevious>Atras</button>
-                        <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="infoAdicionalFormGroup">
-                <form [formGroup]="infoAdicionalFormGroup" #infoAdicional="ngForm" (ngSubmit)="setInfoAdicional(infoAdicional)">
-                    <ng-template matStepLabel>Información adicional</ng-template>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>EPS</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="eps">
-                                            <option>Seleccione...</option>
-                                            <option>EPS Sura</option>
-                                            <option>Medimas</option>
-                                            <option>Aliansalud</option>
-                                            <option>Sanitas</option>
-                                            <option>Compensar EPS</option>
-                                            <option>Salud Total</option>
-                                            <option>Nueva EPS</option>
-                                            <option>Coomeva EPS</option>
-                                            <option>Famisanar</option>
-                                            <option>Cruz Blanca</option>
-                                            <option>SaludVida</option>
-                                            <option>Otra</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Establecimiento</label>
+                  <div class="select">
+                    <select
+                      class="form-control"
+                      formControlName="tipo_establecimiento"
+                    >
+                      <option disabled>Seleccione...</option>
+                      <option>Oficial</option>
+                      <option>Privado</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn btn-success button"
+              mat-button
+              matStepperPrevious
+            >
+              Atras
+            </button>
+            <button class="btn btn-success button" mat-button matStepperNext>
+              Continuar
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="infoAdicionalFormGroup">
+        <form
+          [formGroup]="infoAdicionalFormGroup"
+          #infoAdicional="ngForm"
+          (ngSubmit)="setInfoAdicional(infoAdicional)"
+        >
+          <ng-template matStepLabel>Información adicional</ng-template>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>EPS</label>
+                  <div class="select">
+                    <select class="form-control" formControlName="eps">
+                      <option>Seleccione...</option>
+                      <option>EPS Sura</option>
+                      <option>Medimas</option>
+                      <option>Aliansalud</option>
+                      <option>Sanitas</option>
+                      <option>Compensar EPS</option>
+                      <option>Salud Total</option>
+                      <option>Nueva EPS</option>
+                      <option>Coomeva EPS</option>
+                      <option>Famisanar</option>
+                      <option>Cruz Blanca</option>
+                      <option>SaludVida</option>
+                      <option>Otra</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre del Padre</label>
-                                    <input type="text" class="form-control" formControlName="nombre_padre">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Celular</label>
-                                    <input type="text" class="form-control" formControlName="celular_padre">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Nombre de la madre</label>
-                                    <input type="text" class="form-control" formControlName="nombre_madre">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Celular</label>
-                                    <input type="text" class="form-control" formControlName="celular_madre">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <dl></dl>
-                        <!--<div style="text-align: center">
-                            <h3>OBSERVACIONES</h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Empresa</label>
-                                    <input type="text" class="form-control" formControlName="empresa">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Nombre del Padre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre_padre"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Celular</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="celular_padre"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Nombre de la madre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre_madre"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Celular</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="celular_madre"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <dl></dl>
+            <div style="text-align: center">
+              <h3>OBSERVACIONES</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Empresa</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="empresa"
+                  />
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Tipo de vinculacion</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="tipoVinculacion">
-                                            <option>Seleccione...</option>
-                                            <option>Empleado</option>
-                                            <option>Egresado</option>
-                                            <option>Estudiante</option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-                    </div>
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperPrevious>Atras</button>
-                        <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="documentosFormGroup">
-                <form [formGroup]="documentosFormGroup">
-                    <ng-template matStepLabel>Documentos</ng-template>
-                    <div class="form-group">
-                        <label>Tarjeta Identidad</label>
-                        <input type="file" name="imagen" (change)="onFileChangeTarjeta($event)" accept=".png, .jpg, .jpeg" required>
-                        <img [src]="copia_tarjeta_identidad" class="new-contact__img" alt="">
-                    </div>
-                    <div class="form-group">
-                        <label>Certificado EPS</label>
-                        <input type="file" name="imagen" (change)="onFileChangeEps($event)" accept=".png, .jpg, .jpeg" required>
-                        <img [src]="certificado_eps" class="new-contact__img" alt="">
-                    </div>
-                    <div class="form-group">
-                        <label>Certificado Médico</label>
-                        <input type="file" name="imagen" (change)="onFileChangeMedico($event)" accept=".png, .jpg, .jpeg" required>
-                        <img [src]="certificado_medico" class="new-contact__img" alt="">
-                    </div>
-                    <!--<div class=" card-body">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Tipo de vinculacion</label>
+                  <div class="select">
+                    <select
+                      class="form-control"
+                      formControlName="tipo_vinculacion"
+                    >
+                      <option>Seleccione...</option>
+                      <option>Empleado</option>
+                      <option>Egresado</option>
+                      <option>Estudiante</option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn btn-success button"
+              mat-button
+              matStepperPrevious
+            >
+              Atras
+            </button>
+            <button class="btn btn-success button" mat-button matStepperNext>
+              Continuar
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="documentosFormGroup">
+        <form [formGroup]="documentosFormGroup">
+          <ng-template matStepLabel>Documentos</ng-template>
+          <div class="form-group">
+            <label>Tarjeta Identidad</label>
+            <input
+              type="file"
+              name="imagen"
+              (change)="onFileChangeTarjeta($event)"
+              accept=".png, .jpg, .jpeg"
+              required
+            />
+            <img
+              [src]="copia_tarjeta_identidad"
+              class="new-contact__img"
+              alt=""
+            />
+          </div>
+          <div class="form-group">
+            <label>Certificado EPS</label>
+            <input
+              type="file"
+              name="imagen"
+              (change)="onFileChangeEps($event)"
+              accept=".png, .jpg, .jpeg"
+              required
+            />
+            <img [src]="certificado_eps" class="new-contact__img" alt="" />
+          </div>
+          <div class="form-group">
+            <label>Certificado Médico</label>
+            <input
+              type="file"
+              name="imagen"
+              (change)="onFileChangeMedico($event)"
+              accept=".png, .jpg, .jpeg"
+              required
+            />
+            <img [src]="certificado_medico" class="new-contact__img" alt="" />
+          </div>
+          <!--<div class=" card-body">
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
@@ -466,44 +670,73 @@
 
                         </div>
                     </div>-->
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperPrevious>Atras</button>
-                        <button class="btn btn-success button" mat-button matStepperNext>Continuar</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="programaFormGroup">
-                <form [formGroup]="programaFormGroup" #programa="ngForm" (ngSubmit)="register(programa)">
-                    <ng-template matStepLabel>Selección de Programa</ng-template>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label>Programa al que desea inscribirse</label>
-                                    <div class="select">
-                                        <select class="form-control" formControlName="programa">
-                                            <option *ngFor="let course of listCourses"
-                                                [value]="course.id">
-                                                {{ course.nombre }} | {{course.descripcion}}
-                                                | Edad [{{course.edad_min }} - {{course.edad_max}}]
-                                                | Horario [{{course.hora_inicial}} - {{course.hora_final}}]
-                                                </option>
-                                        </select>
-                                        <i class="form-group__bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-success button" mat-button matStepperPrevious>atras</button>
-                        <button class="btn btn-success button" mat-button>Enviar inscripción</button>
-                        <button class="btn btn-success button" mat-button (click)="stepper.reset()">inicio</button>
-                    </div>
-                </form>
-            </mat-step>
-        </mat-horizontal-stepper>
-        <br>
-        <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }} </div>
-    </div>
+          <div>
+            <button
+              class="btn btn-success button"
+              mat-button
+              matStepperPrevious
+            >
+              Atras
+            </button>
+            <button class="btn btn-success button" mat-button matStepperNext>
+              Continuar
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="programaFormGroup">
+        <form
+          [formGroup]="programaFormGroup"
+          #programa="ngForm"
+          (ngSubmit)="register(programa)"
+        >
+          <ng-template matStepLabel>Selección de Programa</ng-template>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label>Programa al que desea inscribirse</label>
+                  <div class="select">
+                    <select class="form-control" formControlName="programa">
+                      <option
+                        *ngFor="let course of listCourses"
+                        [value]="course.id"
+                      >
+                        {{ course.nombre }} | {{ course.descripcion }} | Edad
+                        [{{ course.edad_min }} - {{ course.edad_max }}] |
+                        Horario [{{ course.hora_inicial }} -
+                        {{ course.hora_final }}]
+                      </option>
+                    </select>
+                    <i class="form-group__bar"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn btn-success button"
+              mat-button
+              matStepperPrevious
+            >
+              atras
+            </button>
+            <button class="btn btn-success button" mat-button>
+              Enviar inscripción
+            </button>
+            <button
+              class="btn btn-success button"
+              mat-button
+              (click)="stepper.reset()"
+            >
+              inicio
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <br />
+    <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+  </div>
 </div>
